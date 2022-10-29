@@ -67,7 +67,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<div class="header">
 		<div class="container">
 			<div class="logo">
-				<h1><a href="/home"><b>T<br>H<br>E</b>MS Store<span>Siêu thị miền Trung</span></a></h1>
+				<h1><a th:href="@{/home}"><b>T<br>H<br>E</b>MS Store<span>Siêu thị miền Trung</span></a></h1>
 			</div>
 			<div class="head-t">
 				<ul class="card">
@@ -94,7 +94,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					</div>
 					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav ">
-							<li class=" active"><a href="index.html" class="hyper "><span>Trang chủ</span></a></li>
+							<li class=" active"><a th:href="@{/home}" class="hyper "><span>Trang chủ</span></a></li>
 
 							<li class="dropdown ">
 								<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Danh mục<b
@@ -167,8 +167,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 								data-summary="summary 1" data-price="6.00" data-quantity="1"
 								data-image="/images/si.jpg">Thêm vào giỏ</button>
 						</div>
-						<p class="reduced " style="font-size: large;">Mô Tả: Sản phẩm miền trung chúng tôi sẽ đêm
-							lại cho bạn những trải nghiệm tuyệt vời
+						<p class="reduced " style="font-size: large;">Mô Tả: [[${product.moTa}]]
 						</p>
 						<div class="clearfix"> </div>
 					</div>
@@ -182,12 +181,14 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			<div class="spec">
 				<h3>Đánh Giá</h3>
 			</div>
+			<th:block th:each="comment : ${comments}">
 			<div class=" con-w3l wthree-of" style="margin-top: 0;">
-				<h6 class="" style="font-size: large;"><b>Tên khách hàng</b></h6>
-				<p class="text" style="margin-left: 5%;">Nội dung bình luận</p>
+				<h6 class="" style="font-size: large;"><b th:text="${comment.tk.taiKhoan}"></b></h6>
+				<p class="text" style="margin-left: 5%;" th:text="${comment.noiDung}"></p>
 				<div class="clearfix"></div>
+				<hr style="border-style: inset; border-width: 1px;">
 			</div>
-			<hr>
+			</th:block>
 			<div class=" con-w3l wthree-of" style="margin-top: 0;">
 				<div class="card">
 					<div class="row">

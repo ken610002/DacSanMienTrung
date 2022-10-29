@@ -1,130 +1,119 @@
-
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<title>MS Store</title>
-<!-- for-mobile-apps -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta property="og:title" content="Vide" />
-<meta name="keywords" content="Big store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	<title>MS Store</title>
+	<!-- for-mobile-apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta property="og:title" content="Vide" />
+	<meta name="keywords" content="Big store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- //for-mobile-apps -->
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<!-- Custom Theme files -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />
-<!-- js -->
-   <script src="js/jquery-1.11.1.min.js"></script>
-<!-- //js -->
-<!-- start-smoth-scrolling -->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){		
-			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+	<!-- //for-mobile-apps -->
+	<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<!-- Custom Theme files -->
+	<link href="/css/style.css" rel='stylesheet' type='text/css' />
+	<!-- js -->
+	<script src="/js/jquery-1.11.1.min.js"></script>
+	<!-- //js -->
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript" src="/js/move-top.js"></script>
+	<script type="text/javascript" src="/js/easing.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+			});
 		});
-	});
-</script>
-<!-- start-smoth-scrolling -->
-<link href="css/font-awesome.css" rel="stylesheet"> 
-<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
-<!--- start-rate---->
-<script src="js/jstarbox.js"></script>
-	<link rel="stylesheet" href="css/jstarbox.css" type="text/css" media="screen" charset="utf-8" />
-		<script type="text/javascript">
-			jQuery(function() {
-			jQuery('.starbox').each(function() {
+	</script>
+	<!-- start-smoth-scrolling -->
+	<link href="/css/font-awesome.css" rel="stylesheet">
+	<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
+	<!--- start-rate---->
+	<script src="/js/jstarbox.js"></script>
+	<link rel="stylesheet" href="/css/jstarbox.css" type="text/css" media="screen" charset="utf-8" />
+	<script type="text/javascript">
+		jQuery(function () {
+			jQuery('.starbox').each(function () {
 				var starbox = jQuery(this);
-					starbox.starbox({
+				starbox.starbox({
 					average: starbox.attr('data-start-value'),
 					changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
 					ghosting: starbox.hasClass('ghosting'),
 					autoUpdateAverage: starbox.hasClass('autoupdate'),
 					buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
 					stars: starbox.attr('data-star-count') || 5
-					}).bind('starbox-value-changed', function(event, value) {
-					if(starbox.hasClass('random')) {
-					var val = Math.random();
-					starbox.next().text(' '+val);
-					return val;
-					} 
+				}).bind('starbox-value-changed', function (event, value) {
+					if (starbox.hasClass('random')) {
+						var val = Math.random();
+						starbox.next().text(' ' + val);
+						return val;
+					}
 				})
 			});
 		});
-		</script>
-<!---//End-rate---->
+	</script>
+	<!---//End-rate---->
 
 </head>
+
 <body>
 	<div class="header">
 		<div class="container">
 			<div class="logo">
-				<h1 ><a href="index.html"><b>T<br>H<br>E</b>MS Store<span>Siêu thị miền Trung</span></a></h1>
+				<h1><a href="/home"><b>T<br>H<br>E</b>MS Store<span>Siêu thị miền Trung</span></a></h1>
 			</div>
 			<div class="head-t">
 				<ul class="card">
-					<li><a href="cart.html" ><i class="fa fa-heart" aria-hidden="true"></i>Giỏ hàng</a></li>
-					<li><a href="login.html" ><i class="fa fa-user" aria-hidden="true"></i>Đăng nhập</a></li>
-					<li><a href="register.html" ><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng ký</a></li>
-					<li><a href="account.html" ><i  class="fa fa-user" aria-hidden="true"></i>Tài khoản</a></li>
-				</ul>	
+					<li><a href="cart.html"><i class="fa fa-heart" aria-hidden="true"></i>Giỏ hàng</a></li>
+					<li><a href="login.html"><i class="fa fa-user" aria-hidden="true"></i>Đăng nhập</a></li>
+					<li><a href="register.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng ký</a></li>
+					<li><a href="account.html"><i class="fa fa-user" aria-hidden="true"></i>Tài khoản</a></li>
+				</ul>
 			</div>
-	
-				<div class="nav-top">
-					<nav class="navbar navbar-default">
-					
+
+			<div class="nav-top">
+				<nav class="navbar navbar-default">
+
 					<div class="navbar-header nav_2">
-						<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+						<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
+							data-target="#bs-megadropdown-tabs">
 							<span class="sr-only">Toggle navigation</span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						
-	
-					</div> 
+					</div>
 					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav ">
-							<li class=" active"><a href="index.html" class="hyper "><span>Trang chủ</span></a></li>	
-							
+							<li class=" active"><a href="index.html" class="hyper "><span>Trang chủ</span></a></li>
+
 							<li class="dropdown ">
-								<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown" ><span>Danh mục<b class="caret"></b></span></a>
+								<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Danh mục<b
+											class="caret"></b></span></a>
 								<ul class="dropdown-menu multi">
 									<div class="row">
 										<div class="col-sm-3">
 											<ul class="multi-column-dropdown">
-			
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Water & Beverages</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Fruits & Vegetables</a></li>
-												<li><a href="kitchen.html"> <i class="fa fa-angle-right" aria-hidden="true"></i>Staples</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Branded Food</a></li>
-										
+												<th:block th:each="categori : ${categoris}">
+													<li><a th:href="|/product/${categori.tenLoai}|"><i class="fa fa-angle-right"
+																aria-hidden="true" data-user="${categori.tenLoai}"
+																th:text="${categori.tenLoai}"></i></a></li>
+												</th:block>
 											</ul>
-										
-										</div>
-										<div class="col-sm-3">
-										
-											<ul class="multi-column-dropdown">
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Breakfast &amp; Cereal</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Snacks</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Spices</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Biscuit &amp; Cookie</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Sweets</a></li>
-										
-											</ul>
-										
+
 										</div>
 										<div class="col-sm-3 w3l">
-											<a href="kitchen.html"><img src="images/me.png" class="img-responsive" alt=""></a>
+											<a th:href="|/product|"><img src="/images/me.png" class="img-responsive"
+													alt=""></a>
 										</div>
 										<div class="clearfix"></div>
-									</div>	
+									</div>
 								</ul>
 							</li>
 							<li><a href="contact.html" class="hyper"><span>Liên hệ</span></a></li>
@@ -132,36 +121,37 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 							<li><a href="about.html" class="hyper"><span>Giới thiệu</span></a></li>
 						</ul>
 					</div>
-					</nav>
-					 <div class="cart" >
-					
-						<span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>
-					</div>
-					<div class="clearfix"></div>
+				</nav>
+				<div class="cart">
+
+					<span class="fa fa-shopping-cart my-cart-icon"><span
+							class="badge badge-notify my-cart-badge"></span></span>
 				</div>
-					
-				</div>			
+				<div class="clearfix"></div>
+			</div>
+
+		</div>
 	</div>
-<div data-vide-bg="video/video">
-    <div class="container">
-		<div class="banner-info">
-			<h3>Sản phẩm miền trung chúng tôi sẽ đêm lại cho bạn những trải nghiệm tuyệt vời </h3>	
-			<div class="search-form">
-				<form action="#" method="post">
-					<input type="text" placeholder="Tìm kiếm..." style="width: 90%;">
-					<a href="search.html" class="btn btn-default">
-					<i class="fa fa-search " style="height: 20px; width: 25px;"></i></a>	
-				</form>
-			</div>		
-		</div>	
-    </div>
-</div>
+	<div data-vide-bg="/video/video">
+		<div class="container">
+			<div class="banner-info">
+				<h3>Sản phẩm miền trung chúng tôi sẽ đêm lại cho bạn những trải nghiệm tuyệt vời </h3>
+				<div class="search-form">
+					<form action="/product/search" method="post">
+						<input name="Keywords"  type="text" placeholder="Tìm kiếm..." style="width: 90%;">
+						<button class="btn btn-default"><i class="fa fa-search " style="height: 20px; width: 25px;"></i></button>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
-    <script src="js/jquery.vide.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+	<script src="/js/jquery.vide.min.js"></script>
 
-<!--content-->
-<div class="content-top ">
+	<!--content-->
+<div class="content-top product">
 	<div class="container ">
 		<div class="spec ">
 			<h3>kết quả tìm kiếm</h3>
@@ -171,38 +161,58 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<b class="line"></b>
 			</div>
 		</div>
-			<div class="tab-head " style="margin-bottom: 20px;">
-				<div class=" tab-content tab-content-t ">
-					<div class="tab-pane active text-style" id="tab1">
-						<div class=" con-w3l">
-							<div class="col-md-3 m-wthree" style="margin-top: 20px;">
-								<div class="col-m">								
-									<a href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
-										<img src="images/of.png" class="img-responsive" alt="">
-										<div class="offer"><p><span>New</span></p></div>
-									</a>
-									<div class="mid-1">
-										<div class="women">
-											<h6><a href="single.html">Moong</a>(1 kg)</h6>							
-										</div>
-										<div class="mid-2">
-											<p><em class="item_price">$1.50</em></p>
-											  <div class="block">
-												<div class="starbox small ghosting"> </div>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-										<div class="add">
-										   <button class="btn btn-danger my-cart-btn my-cart-b " data-id="1" data-name="Moong" data-summary="summary 1" data-price="1.50" data-quantity="1" data-image="images/of.png">Thêm Vào Giỏ Hàng</button>
-										</div>
+		<div class=" con-w3l agileinf">
+				<th:block th:each="product : ${products.content}">
+					<div class="col-md-3 pro-1">
+						<div class="col-m">
+							<a href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
+								<img src="/images/of24.png" class="img-responsive" alt="">
+							</a>
+							<div class="mid-1">
+								<div class="women">
+									<h6><a th:href="|/product/details/${product.maSP}|" th:text="${product.tenSP}"></a>
+									</h6>
+								</div>
+								<div class="mid-2">
+									<p><label>$7.00</label><em class="item_price" th:text="${product.donGia}"></em></p>
+									<div class="block">
+										<div class="starbox small ghosting"> </div>
 									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="add">
+									<button class="btn btn-danger my-cart-btn my-cart-b" data-id="24" data-name="Wheat"
+										data-summary="summary 24" data-price="6.00" data-quantity="1"
+										data-image="/images/of24.png">Add to Cart</button>
 								</div>
 							</div>
-							<div class="clearfix"></div>
-						 </div>
+						</div>
 					</div>
+				
+			</div>
+			<div>
+			<div class="pagination p1 col-md-12 offset-3" style="margin-left: 35%;">
+					<ul>
+					
+						<a class="is-active" th:href="|/product/${loaiSP}?p=0|">
+							<li> << </li>
+						</a>
+						<a th:href="|/product/${loaiSP}?p=${products.number-1}|">
+							<li> <- </li>
+						</a>
+						<a th:href="|/product/${loaiSP}?p=${products.number+1}|">
+							<li> 
+							-> </li>
+						</a>
+						<a th:href="|/product/${loaiSP}?p=${products.totalPages-1}|">
+							<li>>></li>
+						</a>
+						
+					</ul>
 				</div>
 			</div>
+				</th:block>
+		</div>
 	</div>
 	</div>
 
@@ -242,7 +252,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //footer-->
 
 <!-- smooth scrolling -->
-	<script type="text/javascript">
+	<script type="/text/javascript">
 		$(document).ready(function() {
 		/*
 			var defaults = {
@@ -258,10 +268,10 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!-- //smooth scrolling -->
 <!-- for bootstrap working -->
-		<script src="js/bootstrap.js"></script>
+		<script src="/js/bootstrap.js"></script>
 <!-- //for bootstrap working -->
-<script type='text/javascript' src="js/jquery.mycart.js"></script>
-  <script type="text/javascript">
+<script type='/text/javascript' src="js/jquery.mycart.js"></script>
+  <script type="/text/javascript">
   $(function () {
 
     var goToCartIcon = function($addTocartBtn){

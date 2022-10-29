@@ -25,4 +25,5 @@ public class LoaiSP implements Serializable{
 	
 	@OneToMany(mappedBy = "loaiSP")
 	List<SanPham> sp;
+	
 }
