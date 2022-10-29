@@ -16,8 +16,10 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<!-- Custom Theme files -->
 	<link href="/css/style.css" rel='stylesheet' type='text/css' />
 	<link href="/css/slide.css" rel='stylesheet' type='text/css' />
+	<link href="/css/page.css" rel='stylesheet' type='text/css' />
 	<link href="/css/comment.css" rel='stylesheet' type='text/css' />
 	<!-- js -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<script src="/js/jquery-1.11.1.min.js"></script>
 	<!-- //js -->
 	<!-- start-smoth-scrolling -->
@@ -63,11 +65,11 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 </head>
 
-<body>
+<body ng-app="MSStore" ng-controller="comment" th:attr="ng-init='loadComment(\''+${product.maSP}+'\')'">
 	<div class="header">
 		<div class="container">
 			<div class="logo">
-				<h1><a th:href="@{/home}"><b>T<br>H<br>E</b>MS Store<span>Siêu thị miền Trung</span></a></h1>
+				<h1><a href="/home"><b>T<br>H<br>E</b>MS Store<span>Siêu thị miền Trung</span></a></h1>
 			</div>
 			<div class="head-t">
 				<ul class="card">
@@ -94,7 +96,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					</div>
 					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav ">
-							<li class=" active"><a th:href="@{/home}" class="hyper "><span>Trang chủ</span></a></li>
+							<li class=" active"><a th:href="|/home|" class="hyper "><span>Trang chủ</span></a></li>
 
 							<li class="dropdown ">
 								<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Danh mục<b
@@ -149,17 +151,18 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<div class="col-md-5 single-top">
 
 					<i class="slide">
-						<input checked type="radio" name="s" style="background-image: url('/images/of4.png');">
-						<input type="radio" name="s" style="background-image: url('/images/of11.png');">
-						<input type="radio" name="s" style="background-image: url('/images/of12.png');">
-						<input type="radio" name="s" style="background-image: url('/images/of1.png');">
+					<th:block th:each="img,iter : ${images}">
+						<input  th:checked ="${iter.index} == 0" type="radio" 
+							name="s" th:style="'background-image: url('+ @{'/images/' + ${img.tenHinh}} +');'">
+							
+					</th:block>	
 					</i>
 				</div>
 				<div class="col-md-7 single-top-left ">
 					<div class="single-right">
 						<h3 th:text="${product.tenSP}"></h3>
 						<div class="pr-single">
-							<p class="reduced " style="font-size: large;" th:text="${product.donGia}"></p>
+							<p class="reduced " style="font-size: large;" th:text="${product.donGia+'đ'}"></p>
 							<p class="reduced " style="font-size: small;">Tình Trạng: Còn hàng</p>
 						</div>
 						<div class="add add-3">
@@ -167,7 +170,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 								data-summary="summary 1" data-price="6.00" data-quantity="1"
 								data-image="/images/si.jpg">Thêm vào giỏ</button>
 						</div>
-						<p class="reduced " style="font-size: large;">Mô Tả: [[${product.moTa}]]
+						<p class="reduced " style="font-size: large;">Mô Tả:[[${product.moTa}]]
 						</p>
 						<div class="clearfix"> </div>
 					</div>
@@ -181,14 +184,26 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			<div class="spec">
 				<h3>Đánh Giá</h3>
 			</div>
-			<th:block th:each="comment : ${comments}">
-			<div class=" con-w3l wthree-of" style="margin-top: 0;">
-				<h6 class="" style="font-size: large;"><b th:text="${comment.tk.taiKhoan}"></b></h6>
-				<p class="text" style="margin-left: 5%;" th:text="${comment.noiDung}"></p>
+			<div ng-repeat="com in comments" class=" con-w3l wthree-of" style="margin-top: 0;">
+				<div class="row">
+					<div class="col-md-1">
+						<img style="height: 50px; width: 50px" alt=""
+							src="/images/of11.png">
+					</div>
+					<div class="col-md-11">
+						<h6 class="" style="font-size: large;">
+							<b>{{com.tk.hoTen}}</b>
+						</h6>
+					</div>
+					<p class="text" style="margin-left: 5%;">{{com.noiDung}}</p>
+					<p class="text" style="margin-left: 5%;color:#C0C0C0" >{{com.ngayTao}}</p>
+				</div>
+				
 				<div class="clearfix"></div>
-				<hr style="border-style: inset; border-width: 1px;">
+				<br>
 			</div>
-			</th:block>
+			
+			<hr>
 			<div class=" con-w3l wthree-of" style="margin-top: 0;">
 				<div class="card">
 					<div class="row">
@@ -196,13 +211,14 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 							<div class="comment-box ml-2">
 								<h4>Viết bình luận</h4>
 								<div class="comment-area">
-									<textarea class="form-control" placeholder="Nội dung" rows="4"></textarea>
+									<textarea class="form-control" ng-model="cmt" placeholder="Nội dung" rows="4"></textarea>
 								</div>
 								<div class="comment-btns mt-2">
 									<div class="row">
 										<div class="">
 											<div class="pull-right">
-												<button class="btn btn-success send btn-sm">Gửi <i
+												<button ng-click="comment()"
+														class="btn btn-success send btn-sm">Gửi <i
 														class="fa fa-long-arrow-right ml-1"></i></button>
 											</div>
 										</div>
@@ -228,19 +244,21 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				</div>
 			</div>
 			<div class=" con-w3l wthree-of">
-				<th:block th:each="product : ${products}">
-					<div class="col-md-3 pro-1">
+				<th:block th:each="pr : ${products}">
+					<div  class="col-md-3 pro-1">
 						<div class="col-m">
-							<a href="#" data-toggle="modal" data-target="#myModal5" class="offer-img">
-								<img src="/images/of4.png" class="img-responsive" alt="">
-							</a>
+							<th:block th:each="img,i : ${imagesall}">
+								<a th:if="${img.sp.maSP == pr.maSP}"  data-toggle="modal" data-target="#myModal5" class="offer-img">
+									<img style="height:108.41px" th:src="@{'/images/'+${img.tenHinh}}" class="img-responsive" alt="">
+								</a>
+							</th:block>
 							<div class="mid-1">
 								<div class="women">
-									<h6><a th:href="|/product/details/${product.maSP}|" th:text="${product.tenSP}"></a>
+									<h6><a th:href="|/product/details/${pr.maSP}|" th:text="${pr.tenSP}"></a>
 									</h6>
 								</div>
 								<div class="mid-2">
-									<p><em class="item_price" th:text="${product.donGia+'đ'}"></em></p>
+									<p><em class="item_price" th:text="${pr.donGia+'đ'}"></em></p>
 									<div class="block">
 										<div class="starbox small ghosting"> </div>
 									</div>
@@ -311,7 +329,8 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 	<!-- //smooth scrolling -->
 	<!-- for bootstrap working -->
-	<script src="js/bootstrap.js"></script>
+	<script src="/js/bootstrap.js"></script>
+	<script src="/js/comment.js"></script>
 	<!-- //for bootstrap working -->
 	<script type='text/javascript' src="/js/jquery.mycart.js"></script>
 	<script type="text/javascript">

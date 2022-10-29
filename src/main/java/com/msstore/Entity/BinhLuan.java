@@ -1,6 +1,7 @@
 package com.msstore.Entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,7 +31,8 @@ public class BinhLuan implements Serializable{
 	private long maBL;
 	@Column(name="noidung")
 	private String noiDung;
-
+	@Column(name="ngaytao")
+	private Date ngayTao;
 	
 	@ManyToOne
 	@JoinColumn(name = "maSP")

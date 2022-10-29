@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,13 +40,13 @@ public class SanPham implements Serializable{
 	@JoinColumn(name = "maloai")
 	LoaiSP loaiSP;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "sp")
 	List<BinhLuan> bl;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "sp")
 	List<HinhAnh> hinhAnh;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "sp")
 	List<ChiTietDonHang> ctdh;
 }

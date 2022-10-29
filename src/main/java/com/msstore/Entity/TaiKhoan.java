@@ -16,6 +16,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,14 +41,16 @@ public class TaiKhoan implements Serializable{
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngaySinh;
+	@Column(name="hinh")
+	private String hinh;
 	
 	
 	@ManyToOne @JoinColumn(name="maCV")
 	ChucVu cv;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "tk")
 	List<BinhLuan> bl;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "tk")
 	List<DonHang> donHang;
 }

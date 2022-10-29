@@ -88,6 +88,8 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
+
+
 					</div>
 					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav ">
@@ -168,12 +170,14 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 							<th:block th:each="product : ${products}">
 								<div class="col-md-3 m-wthree" style="margin-top: 20px;">
 									<div class="col-m">
-										<a href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
-											<img th:src="@{/images/of.png}" class="img-responsive" alt="">
-											<div class="offer">
+										<th:block th:each="img : ${images}">
+										<a th:if="${img.sp.maSP == product.maSP}" href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
+											<img style="height:108.41px" th:src="@{'/images/'+${img.tenHinh}}" class="img-responsive" alt="">
+											<div class="offer"> 
 												<p><span>New</span></p>
 											</div>
 										</a>
+										</th:block>
 										<div class="mid-1">
 											<div class="women">
 												<h6><a th:href="|/product/details/${product.maSP}|"
@@ -219,31 +223,41 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<div class=" tab-content tab-content-t ">
 					<div class="tab-pane active text-style" id="tab1">
 						<div class=" con-w3l">
-							<div class="col-md-3 m-wthree" style="margin-top: 20px;">
-								<div class="col-m">
-									<a href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
-										<img src="/images/of.png" class="img-responsive" alt="">
-									</a>
-									<div class="mid-1">
-										<div class="women">
-											<h6><a href="single.html">Moong</a>(1 kg)</h6>
-										</div>
-										<div class="mid-2">
-											<p><em class="item_price">$1.50</em></p>
-											<div class="block">
-												<div class="starbox small ghosting"> </div>
+							<th:block th:each="product : ${productshi}">
+								<div class="col-md-3 m-wthree" style="margin-top: 20px;">
+									<div class="col-m">
+										<th:block th:each="img,iter : ${images}">
+										<a th:if="${img.sp.maSP == product.group.maSP}" href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
+											<img style="height:108.41px" th:src="@{'/images/'+${img.tenHinh}}" class="img-responsive" alt="">
+											<div class="offer"> 
+												<p><span>New </span></p>
+												<p th:text="${iter.size}"></p>
 											</div>
-											<div class="clearfix"></div>
+										</a>
+										</th:block>
+										<div class="mid-1">
+											<div class="women">
+												<h6><a th:href="|/product/details/${product.group.maSP}|"
+														th:text="${product.group.tenSP}"></a></h6> <br>
+												<h6 class="item_price" th:text="'Đã bán: '+${product.soLuong}"></h6>
+											</div>
+											<div class="mid-2">
+												<p><em class="item_price" th:text="${product.group.donGia}"></em></p>
+												<div class="block">
+													<div class="starbox small ghosting"> </div>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+											<div class="add">
+												<button class="btn btn-danger my-cart-btn my-cart-b " data-id="1"
+													data-name="Moong" data-summary="summary 1" data-price="1.50"
+													data-quantity="1" data-image="images/of.png">Thêm Vào Giỏ
+													Hàng</button>
+											</div>
 										</div>
-										<div class="add">
-											<button class="btn btn-danger my-cart-btn my-cart-b " data-id="1"
-												data-name="Moong" data-summary="summary 1" data-price="1.50"
-												data-quantity="1" data-image="images/of.png">Thêm Vào Giỏ Hàng</button>
-										</div>
-
 									</div>
 								</div>
-							</div>
+							</th:block>
 							<div class="clearfix"></div>
 						</div>
 					</div>
@@ -251,6 +265,8 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			</div>
 		</div>
 	</div>
+
+	
 
 	<!--footer-->
 	<div class="footer">

@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +25,7 @@ public class LoaiSP implements Serializable{
 	@Column(name="tenloai")
 	private String tenLoai;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "loaiSP")
 	List<SanPham> sp;
-	
 }

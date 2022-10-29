@@ -9,7 +9,6 @@ import com.msstore.Entity.BinhLuan;
 
 public interface BinhLuanDAO extends JpaRepository<BinhLuan, Long>{
 	
-	@Query(value ="SELECT o from BinhLuan o where o.sp.maSP like ?1")
-	List<BinhLuan> findAllBySanPham(Long masp);
-	
+	@Query("SELECT bl from BinhLuan bl where bl.sp.maSP = ?1")
+	public List<BinhLuan> getCommentByPID (Long id);
 }

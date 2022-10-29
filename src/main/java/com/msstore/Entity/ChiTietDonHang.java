@@ -34,7 +34,7 @@ public class ChiTietDonHang implements Serializable{
 	@Column(name="dongia")
 	private Double donGia;
 	@Column(name="soluong")
-	private int soluong;
+	private int soLuong;
 	
 	
 }
