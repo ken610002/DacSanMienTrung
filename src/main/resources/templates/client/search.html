@@ -15,6 +15,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<!-- Custom Theme files -->
 	<link href="/css/style.css" rel='stylesheet' type='text/css' />
+	<link href="/css/page.css" rel='stylesheet' type='text/css' />
 	<!-- js -->
 	<script src="/js/jquery-1.11.1.min.js"></script>
 	<!-- //js -->
@@ -91,7 +92,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					</div>
 					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav ">
-							<li class=" active"><a href="index.html" class="hyper "><span>Trang chủ</span></a></li>
+							<li class=" active"><a th:href="@{/home}" class="hyper "><span>Trang chủ</span></a></li>
 
 							<li class="dropdown ">
 								<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Danh mục<b
@@ -174,7 +175,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 									</h6>
 								</div>
 								<div class="mid-2">
-									<p><label>$7.00</label><em class="item_price" th:text="${product.donGia}"></em></p>
+									<p><em class="item_price" th:text="${product.donGia}+'đ'"></em></p>
 									<div class="block">
 										<div class="starbox small ghosting"> </div>
 									</div>
@@ -183,7 +184,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 								<div class="add">
 									<button class="btn btn-danger my-cart-btn my-cart-b" data-id="24" data-name="Wheat"
 										data-summary="summary 24" data-price="6.00" data-quantity="1"
-										data-image="/images/of24.png">Add to Cart</button>
+										data-image="/images/of24.png">Thêm vào giỏ hàng</button>
 								</div>
 							</div>
 						</div>
@@ -191,10 +192,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				
 			</div>
 			<div>
-			<div class="pagination p1 col-md-12 offset-3" style="margin-left: 35%;">
+			<div class="pagination p1 col-md-12 offset-3" style="margin-left: 43%;">
 					<ul>
-					
-						<a class="is-active" th:href="|/product/${loaiSP}?p=0|">
+						<a th:href="|/product/${loaiSP}?p=0|">
 							<li> << </li>
 						</a>
 						<a th:href="|/product/${loaiSP}?p=${products.number-1}|">
