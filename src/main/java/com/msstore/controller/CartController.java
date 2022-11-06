@@ -43,7 +43,10 @@ public class CartController {
 	
 	@Autowired
 	HinhAnhDAO haDAO;
+<<<<<<< HEAD
 	
+=======
+>>>>>>> c95f7e2a594848dacc393c032484c8bd5823106d
 	@GetMapping("/home/cart/get-product")
 	public List<SanPham> getSP(){
 		return spDAO.findAll();
