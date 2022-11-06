@@ -31,7 +31,7 @@
 }
 
 /* I haven't found a way for IE and Edge to let me style inputs that way */
-input {
+.slide input {
 	appearance: none;
 	-ms-appearance: none;
 	-webkit-appearance: none;
@@ -87,7 +87,7 @@ input:checked {
 	box-shadow: -5px 10px 20px -15px rgb(252, 249, 249);
 }
 
-input:checked + input:before {
+input:checked + input :before {
 	left: -3rem;
 }
 

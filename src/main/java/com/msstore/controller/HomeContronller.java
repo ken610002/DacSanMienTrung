@@ -15,14 +15,19 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.msstore.DAO.ChiTIetDonHangDAO;
+import com.msstore.DAO.DonHangDAO;
 import com.msstore.DAO.HinhAnhDAO;
 import com.msstore.DAO.LoaiSPDAO;
 import com.msstore.DAO.SanPhamDAO;
 import com.msstore.DAO.TaiKhoanDAO;
+import com.msstore.Entity.ChiTietDonHang;
+import com.msstore.Entity.DonHang;
 import com.msstore.Entity.HinhAnh;
 import com.msstore.Entity.LoaiSP;
 import com.msstore.Entity.MailInfo;
@@ -51,6 +56,12 @@ public class HomeContronller {
 	@Autowired
 	MailerService mailService;
 	
+	@Autowired
+	DonHangDAO dhDAO;
+	
+	@Autowired
+	ChiTIetDonHangDAO ctdhDAO;
+	
 	@GetMapping
 	public String doGetHome(Model model) {
 		Pageable sortedByIDDesc = 
@@ -72,6 +83,22 @@ public class HomeContronller {
 		model.addAttribute("images", img);
 		return "client/index";
 	}
+	
+	@GetMapping("/cart")
+	public String pageCart(Model model) {
+		List<LoaiSP> categoris = lspDAO.findAll();
+		model.addAttribute("categoris", categoris);
+		return "client/cart";
+	}
+	
+	@GetMapping("/check-out/history")
+	public String pageCO(Model model) {
+		List<LoaiSP> categoris = lspDAO.findAll();
+		model.addAttribute("categoris", categoris);
+		return "client/check-out-history";
+	}
+	
+	
 	
 	@GetMapping("/login")
 	public String doGetLogin() {
