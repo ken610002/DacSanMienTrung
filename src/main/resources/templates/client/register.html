@@ -61,130 +61,52 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 </head>
 <body>
-	<div class="header">
+	<!--header-->
+	<div th:replace="/client/header"></div>
+	
+	     <!--banner-->
+	<div class="banner-top">
 		<div class="container">
-			<div class="logo">
-				<h1 ><a href="index.html"><b>T<br>H<br>E</b>MS Store<span>Siêu thị miền Trung</span></a></h1>
-			</div>
-			<div class="head-t">
-				<ul class="card">
-					<li><a href="cart.html" ><i class="fa fa-heart" aria-hidden="true"></i>Giỏ hàng</a></li>
-					<li><a href="/home/login" ><i class="fa fa-user" aria-hidden="true"></i>Đăng nhập</a></li>
-					<li><a href="/home/register" ><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng ký</a></li>
-					<li><a href="account.html" ><i  class="fa fa-user" aria-hidden="true"></i>Tài khoản</a></li>
-				</ul>	
-			</div>
-	
-				<div class="nav-top">
-					<nav class="navbar navbar-default">
-					
-					<div class="navbar-header nav_2">
-						<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						
-	
-					</div> 
-					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-						<ul class="nav navbar-nav ">
-							<li class=" active"><a href="index.html" class="hyper "><span>Trang chủ</span></a></li>	
-							
-							<li class="dropdown ">
-								<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown" ><span>Danh mục<b class="caret"></b></span></a>
-								<ul class="dropdown-menu multi">
-									<div class="row">
-										<div class="col-sm-3">
-											<ul class="multi-column-dropdown">
-			
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Water & Beverages</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Fruits & Vegetables</a></li>
-												<li><a href="kitchen.html"> <i class="fa fa-angle-right" aria-hidden="true"></i>Staples</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Branded Food</a></li>
-										
-											</ul>
-										
-										</div>
-										<div class="col-sm-3">
-										
-											<ul class="multi-column-dropdown">
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Breakfast &amp; Cereal</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Snacks</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Spices</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Biscuit &amp; Cookie</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Sweets</a></li>
-										
-											</ul>
-										
-										</div>
-										<div class="col-sm-3 w3l">
-											<a href="kitchen.html"><img src="images/me.png" class="img-responsive" alt=""></a>
-										</div>
-										<div class="clearfix"></div>
-									</div>	
-								</ul>
-							</li>
-							<li><a href="contact.html" class="hyper"><span>Liên hệ</span></a></li>
-							<li><a href="contact.html" class="hyper"><span>Tin tức</span></a></li>
-							<li><a href="about.html" class="hyper"><span>Giới thiệu</span></a></li>
-						</ul>
-					</div>
-					</nav>
-					 <div class="cart" >
-					
-						<span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-					
-				</div>			
+			<h3 >Đăng Kí</h3>
+			<h4><a href="/home">Trang chủ</a><label>/</label>Đăng Kí</h4>
+			<div class="clearfix"> </div>
+		</div>
 	</div>
-     <!--banner-->
-<div class="banner-top">
-	<div class="container">
-		<h3 >Đăng Kí</h3>
-		<h4><a href="/home">Trang chủ</a><label>/</label>Đăng Kí</h4>
-		<div class="clearfix"> </div>
-	</div>
-</div>
 
 <!--login-->
-
 	<div class="login">
 		<div class="main-agileits">
 				<div class="form-w3agile form1">
 					<h3>Đăng kí</h3>
-					<form action="#" method="post">
+					<form th:action="@{/home/register}" method="post" th:object="${account}">
 						<div class="key">
 							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text" value="Tài khoản" name="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tài Khoản';}" required="">
+							<input th:field="*{taiKhoan}" type="text" value="Tài khoản"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tài Khoản';}" required="">
 							<div class="clearfix"></div>
 						</div>
 						<div class="key">
 							<i class="fa fa-lock" aria-hidden="true"></i>
-							<input  type="password" value="Mật Khẩu" name="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mật khẩu';}" required="">
+							<input th:field="*{matKhau}"  type="password" value="Mật Khẩu"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mật khẩu';}" required="">
 							<div class="clearfix"></div>
 						</div>
 						<div class="key">
 							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text" value="Họ Tên" name="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Họ Tên';}" required="">
+							<input th:field="*{hoTen}"  type="text" value="Họ Tên"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Họ Tên';}" required="">
 							<div class="clearfix"></div>
 						</div>
 						<div class="key">
 							<i class="fa fa-at" aria-hidden="true"></i>
-							<input  type="text" value="Email" name="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+							<input  th:field="*{email}" type="text" value="Email"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
 							<div class="clearfix"></div>
 						</div>
 						<div class="key">
 							<i class="fa fa-phone" aria-hidden="true"></i>
-							<input  type="text" value="SĐT" name="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'SĐT';}" required="">
+							<input th:field="*{sdt}"  type="text" value="SĐT"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'SĐT';}" required="">
 							<div class="clearfix"></div>
 						</div>
 						<div class="key">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
-							<input  type="text" value="Địa chỉ" name="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Địa chỉ';}" required="">
+							<input th:field="*{diaChi}"  type="text" value="Địa chỉ"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Địa chỉ';}" required="">
 							<div class="clearfix"></div>
 						</div>
 
@@ -194,37 +116,10 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				
 			</div>
 		</div>
+
 <!--footer-->
 <div class="footer">
-	<div class="container">
-		<div class="clearfix"></div>
-			<div class="footer-bottom">
-				<h2 ><a href="/home"><b>T<br>H<br>E</b>MS Store<span>Siêu thị miền Trung</span></a></h2>
-				
-				<ul class="social-fo">
-					<li><a href="#" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-					<li><a href="#" class=" twi"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-					<li><a href="#" class=" pin"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-					<li><a href="#" class=" dri"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-				</ul>
-				<div class=" address">
-					<div class="col-md-4 fo-grid1">
-							<p><i class="fa fa-home" aria-hidden="true"></i>756 Trưng Trắc, phường 9, quận 3, tp.HCM</p>
-					</div>
-					<div class="col-md-4 fo-grid1">
-							<p><i class="fa fa-phone" aria-hidden="true"></i>+932142343</p>	
-					</div>
-					<div class="col-md-4 fo-grid1">
-						<p><a href="mailto:info@example.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>msstrore@gmail.com</a></p>
-					</div>
-					<div class="clearfix"></div>
-					
-					</div>
-			</div>
-		<div class="copy-right">
-			<p> &copy; 2022 MS Store</p>
-		</div>
-	</div>
+	<div th:replace="/client/footer"></div>
 </div>
 <!-- //footer-->
 <!-- smooth scrolling -->
@@ -286,6 +181,5 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
   });
   </script>
-
 </body>
 </html>

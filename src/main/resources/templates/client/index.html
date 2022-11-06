@@ -63,77 +63,8 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 </head>
 
 <body>
-	<div class="header">
-		<div class="container">
-			<div class="logo">
-				<h1><a href="/home"><b>T<br>H<br>E</b>MS Store<span>Siêu thị miền Trung</span></a></h1>
-			</div>
-			<div class="head-t">
-				<ul class="card">
-					<li><a href="cart.html"><i class="fa fa-heart" aria-hidden="true"></i>Giỏ hàng</a></li>
-					<li><a href="/home/login"><i class="fa fa-user" aria-hidden="true"></i>Đăng nhập</a></li>
-					<li><a href="/home/register"><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng ký</a></li>
-					<li><a href="account.html"><i class="fa fa-user" aria-hidden="true"></i>Tài khoản</a></li>
-				</ul>
-			</div>
-
-			<div class="nav-top">
-				<nav class="navbar navbar-default">
-
-					<div class="navbar-header nav_2">
-						<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
-							data-target="#bs-megadropdown-tabs">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-
-
-					</div>
-					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-						<ul class="nav navbar-nav ">
-							<li class=" active"><a href="index.html" class="hyper "><span>Trang chủ</span></a></li>
-
-							<li class="dropdown ">
-								<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Danh mục<b
-											class="caret"></b></span></a>
-								<ul class="dropdown-menu multi">
-									<div class="row">
-										<div class="col-sm-3">
-											<ul class="multi-column-dropdown">
-												<th:block th:each="categori : ${categoris}">
-													<li><a th:href="|/product/${categori.tenLoai}|"><i class="fa fa-angle-right"
-																aria-hidden="true" data-user="${categori.tenLoai}"
-																th:text="${categori.tenLoai}"></i></a></li>
-												</th:block>
-											</ul>
-
-										</div>
-										<div class="col-sm-3 w3l">
-											<a th:href="|/product|"><img src="/images/me.png" class="img-responsive"
-													alt=""></a>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</ul>
-							</li>
-							<li><a href="contact.html" class="hyper"><span>Liên hệ</span></a></li>
-							<li><a href="contact.html" class="hyper"><span>Tin tức</span></a></li>
-							<li><a href="about.html" class="hyper"><span>Giới thiệu</span></a></li>
-						</ul>
-					</div>
-				</nav>
-				<div class="cart">
-
-					<span class="fa fa-shopping-cart my-cart-icon"><span
-							class="badge badge-notify my-cart-badge"></span></span>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-
-		</div>
-	</div>
+	<div th:replace="/client/header"></div>
+	
 	<div data-vide-bg="/video/video">
 		<div class="container">
 			<div class="banner-info">
@@ -167,12 +98,12 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<div class=" tab-content tab-content-t ">
 					<div class="tab-pane active text-style" id="tab1">
 						<div class=" con-w3l">
-							<th:block th:each="product : ${products}">
+							<th:block th:each="product : ${products}" >
 								<div class="col-md-3 m-wthree" style="margin-top: 20px;">
-									<div class="col-m">
-										<th:block th:each="img : ${images}">
-										<a th:if="${img.sp.maSP == product.maSP}" href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
-											<img style="height:108.41px" th:src="@{'/images/'+${img.tenHinh}}" class="img-responsive" alt="">
+									<div class="col-m" th:with="image=${product.donGia}">
+										<th:block th:each="img : ${images}" >
+										<a th:if="${img.sp.maSP == product.maSP}" th:data-img="'/images/'+${img.tenHinh}" href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
+											<img style="height:108.41px"  th:src="@{'/images/'+${img.tenHinh}}" class="img-responsive" alt="">
 											<div class="offer"> 
 												<p><span>New</span></p>
 											</div>
@@ -191,10 +122,12 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 												<div class="clearfix"></div>
 											</div>
 											<div class="add">
-												<button class="btn btn-danger my-cart-btn my-cart-b " data-id="1"
-													data-name="Moong" data-summary="summary 1" data-price="1.50"
-													data-quantity="1" data-image="images/of.png">Thêm Vào Giỏ
-													Hàng</button>
+												<button class="btn btn-danger my-cart-btn my-cart-b "
+													th:data-id ="${product.maSP}"
+													th:data-name ="${product.tenSP}"
+													th:data-price ="${product.donGia}"
+													data-summary="summary 1" 
+													data-quantity="1" >Thêm Vào Giỏ Hàng</button>
 											</div>
 										</div>
 									</div>
@@ -227,10 +160,10 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 								<div class="col-md-3 m-wthree" style="margin-top: 20px;">
 									<div class="col-m">
 										<th:block th:each="img,iter : ${images}">
-										<a th:if="${img.sp.maSP == product.group.maSP}" href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
+										<a th:if="${img.sp.maSP == product.group.maSP}" th:data-img="'/images/'+${img.tenHinh}" href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
 											<img style="height:108.41px" th:src="@{'/images/'+${img.tenHinh}}" class="img-responsive" alt="">
 											<div class="offer"> 
-												<p><span>New </span></p>
+												<p><span>Special </span></p>
 												<p th:text="${iter.size}"></p>
 											</div>
 										</a>
@@ -249,10 +182,12 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 												<div class="clearfix"></div>
 											</div>
 											<div class="add">
-												<button class="btn btn-danger my-cart-btn my-cart-b " data-id="1"
-													data-name="Moong" data-summary="summary 1" data-price="1.50"
-													data-quantity="1" data-image="images/of.png">Thêm Vào Giỏ
-													Hàng</button>
+												<button class="btn btn-danger my-cart-btn my-cart-b " 
+													th:data-id ="${product.group.maSP}"
+													th:data-name ="${product.group.tenSP}"
+													th:data-price ="${product.group.donGia}"
+													data-summary="summary 1" 
+													data-quantity="1">Thêm Vào Giỏ Hàng</button>
 											</div>
 										</div>
 									</div>
@@ -327,8 +262,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		$(function () {
 
 			var goToCartIcon = function ($addTocartBtn) {
+				var image = (($($addTocartBtn.parent()).parent())).parent().children().first().data('img');
 				var $cartIcon = $(".my-cart-icon");
-				var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({ "position": "fixed", "z-index": "999" });
+				var $image = $('<img width="30px" height="30px" src="' + image + '"/>').css({ "position": "fixed", "z-index": "999" });
 				$addTocartBtn.prepend($image);
 				var position = $cartIcon.position();
 				$image.animate({

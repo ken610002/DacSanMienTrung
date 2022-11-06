@@ -70,9 +70,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			</div>
 			<div class="head-t">
 				<ul class="card">
-					<li><a href="cart.html"><i class="fa fa-heart" aria-hidden="true"></i>Giỏ hàng</a></li>
-					<li><a href="login.html"><i class="fa fa-user" aria-hidden="true"></i>Đăng nhập</a></li>
-					<li><a href="register.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng ký</a></li>
+					<li><a href="/home/check-out/history"><i class="fa fa-heart" aria-hidden="true"></i>Lịch sử đơn hàng</a></li>
+					<li><a href="/home/login"><i class="fa fa-user" aria-hidden="true"></i>Đăng nhập</a></li>
+					<li><a href="/home/register"><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng ký</a></li>
 					<li><a href="account.html"><i class="fa fa-user" aria-hidden="true"></i>Tài khoản</a></li>
 				</ul>
 			</div>
@@ -179,7 +179,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					<div class="col-md-3 pro-1">
 						<div class="col-m">
 							<th:block th:each="img,i : ${imagesall}">
-								<a th:if="${img.sp.maSP == product.maSP}"  data-toggle="modal" data-target="#myModal5" class="offer-img">
+								<a th:if="${img.sp.maSP == product.maSP}" th:data-img="'/images/'+${img.tenHinh}"  data-toggle="modal" data-target="#myModal5" class="offer-img">
 									<img style="height:108.41px" th:src="@{'/images/'+${img.tenHinh}}" class="img-responsive" alt="">
 								</a>
 							</th:block>
@@ -196,9 +196,12 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 									<div class="clearfix"></div>
 								</div>
 								<div class="add">
-									<button class="btn btn-danger my-cart-btn my-cart-b" data-id="24" data-name="Wheat"
-										data-summary="summary 24" data-price="6.00" data-quantity="1"
-										data-image="/images/of24.png">Thêm vào giỏ</button>
+									<button class="btn btn-danger my-cart-btn my-cart-b" 
+										th:data-id ="${product.maSP}"
+										th:data-name ="${product.tenSP}"
+										th:data-price ="${product.donGia}"
+										data-summary="summary 1" 
+										data-quantity="1">Thêm vào giỏ</button>
 								</div>
 							</div>
 						</div>
@@ -284,8 +287,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		$(function () {
 
 			var goToCartIcon = function ($addTocartBtn) {
+				var image = (($($addTocartBtn.parent()).parent())).parent().children().first().data('img');
 				var $cartIcon = $(".my-cart-icon");
-				var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({ "position": "fixed", "z-index": "999" });
+				var $image = $('<img width="30px" height="30px" src="' + image + '"/>').css({ "position": "fixed", "z-index": "999" });
 				$addTocartBtn.prepend($image);
 				var position = $cartIcon.position();
 				$image.animate({

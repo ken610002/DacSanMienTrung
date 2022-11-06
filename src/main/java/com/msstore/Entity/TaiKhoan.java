@@ -41,8 +41,6 @@ public class TaiKhoan implements Serializable{
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngaySinh;
-	@Column(name="hinh")
-	private String hinh;
 	
 	
 	@ManyToOne @JoinColumn(name="maCV")

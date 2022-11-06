@@ -16,7 +16,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Custom Theme files -->
 <link href="/css/style.css" rel='stylesheet' type='text/css' />
 <!-- js -->
-<script src="/js/jquery-1.11.1.min.js"></script>
+   <script src="/js/jquery-1.11.1.min.js"></script>
 <!-- //js -->
 <!-- start-smoth-scrolling -->
 <script type="text/javascript" src="/js/move-top.js"></script>
@@ -35,7 +35,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href='//fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
 <!--- start-rate---->
 <script src="/js/jstarbox.js"></script>
-	<link rel="stylesheet" href="/css/jstarbox.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="css/jstarbox.css" type="text/css" media="screen" charset="utf-8" />
 		<script type="text/javascript">
 			jQuery(function() {
 			jQuery('.starbox').each(function() {
@@ -60,96 +60,68 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!---//End-rate---->
 
 </head>
-<body>
-
-	<div th:replace="/client/header"></div>
+<body >
+		<div th:replace="/client/header"></div>
 	
-	    <!--banner-->
-	<div class="banner-top">
-		<div class="container">
-			<h3 >Tài khoản</h3>
-			<h4><a href="index.html">Trang chủ</a><label>/</label>Tài khoản</h4>
-			<div class="clearfix"> </div>
-		</div>
+   <!--banner-->
+<div class="banner-top">
+	<div class="container">
+		<h3 >Giỏ Hàng</h3>
+		<h4><a href="index.html">Trang chủ</a><label>/</label>Giỏ hàng</h4>
+		<div class="clearfix"> </div>
 	</div>
+</div>
 
-<!-- faqs -->
-	<div class="about-w3 ">
-		<div class="container" style="margin-top: 50px;">
-				<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="#home" >Thông tin tài khoản</a></li>
-					<li><a data-toggle="tab" href="#menu1" >Đổi mật khẩu</a></li>
-					<li><a  href="/home/account/logout">Đăng xuất</a></li>
-				</ul>
-				
-				<div class="tab-content" style=" margin-top: 30px;">
-					<div id="home" class="tab-pane fade in active">
-						<div class="main-agileits" style="width: 50%; margin-bottom: 50px;">
-							<div class="form-w3agile form1">
-								<h3>Thông tin tài khoản</h3>
-								<p class="text-center" style="color: red;" th:text="${message}"></p>
-								<form th:action="@{/home/account/editProfile}" method="post" th:object="${account}">
-									<div class="key">
-										<i class="fa fa-user" aria-hidden="true"></i>
-										<input th:field="*{hoTen}" type="text" value="Họ Tên"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Họ Tên';}" required="">
-										<div class="clearfix"></div>
-									</div>
-									<div class="key">
-										<i class="fa fa-at" aria-hidden="true"></i>
-										<input th:field="*{email}" type="text" value="Email"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-										<div class="clearfix"></div>
-									</div>
-									<div class="key">
-										<i class="fa fa-phone" aria-hidden="true"></i>
-										<input th:field="*{sdt}" type="text" value="SĐT"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'SĐT';}" required="">
-										<div class="clearfix"></div>
-									</div>
-									<div class="key">
-										<i class="fa fa-envelope" aria-hidden="true"></i>
-										<input th:field="*{diaChi}" type="text" value="Địa chỉ"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Địa chỉ';}" required="">
-										<div class="clearfix"></div>
-									</div>
-									<input type="submit" value="Cât nhập thông tin">
-								</form>
-							</div>
-						</div>
-					</div>
-					<div id="menu1" class="tab-pane fade">
-						<div class="main-agileits" style="width: 50%; margin-bottom: 50px;">
-							<div class="form-w3agile form1">
-								<h3>Đổi mật khẩu</h3>
-								<p class="text-center" style="color: red;" th:text="${mess}"></p>
-								<form th:action="@{/home/account/changepass}"  method="post">
-									<div class="key">
-										<i class="fa fa-user" aria-hidden="true"></i>
-										<input  name="taiKhoan" type="text" value="Tài khoản"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tài Khoản';}" required="">
-										<div class="clearfix"></div>
-									</div>
-									<div class="key">
-										<i class="fa fa-lock" aria-hidden="true"></i>
-										<input name="matKhauCu" type="text" value="Mật Khẩu cũ"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mật khẩu cũ';}" required="">
-										<div class="clearfix"></div>
-									</div>
-									<div class="key">
-										<i class="fa fa-lock" aria-hidden="true"></i>
-										<input name="matKhauMoi" type="text" value="Mật Khẩu mới"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mật khẩu mới';}" required="">
-										<div class="clearfix"></div>
-									</div>
-									<input type="submit" value="Đổi mật khẩu">
-								</form>
-							</div>
-						</div>
+	<!-- contact -->
+	<div class="check-out">	 
+		<div class="container" id="check-out-history">	 
+	 		<div class="spec">
+				<h3>Lịch sử đơn hàng</h3>
+					<div class="ser-t">
+						<b></b>
+						<span><i></i></span>
+						<b class="line"></b>
 					</div>
 			</div>
+			
+	
 		</div>
 	</div>
+		 				
 	
 <!--footer-->
 <div class="footer">
-	<div th:replace="/client/footer"></div>
+	<div class="container">
+		<div class="clearfix"></div>
+			<div class="footer-bottom">
+				<h2 ><a href="index.html"><b>T<br>H<br>E</b>MS Store<span>Siêu thị miền Trung</span></a></h2>
+				
+				<ul class="social-fo">
+					<li><a href="#" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="#" class=" twi"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+					<li><a href="#" class=" pin"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+					<li><a href="#" class=" dri"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+				</ul>
+				<div class=" address">
+					<div class="col-md-4 fo-grid1">
+							<p><i class="fa fa-home" aria-hidden="true"></i>756 Trưng Trắc, phường 9, quận 3, tp.HCM</p>
+					</div>
+					<div class="col-md-4 fo-grid1">
+							<p><i class="fa fa-phone" aria-hidden="true"></i>+932142343</p>	
+					</div>
+					<div class="col-md-4 fo-grid1">
+						<p><a href="mailto:info@example.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>msstrore@gmail.com</a></p>
+					</div>
+					<div class="clearfix"></div>
+					
+					</div>
+			</div>
+		<div class="copy-right">
+			<p> &copy; 2022 MS Store</p>
+		</div>
+	</div>
 </div>
 <!-- //footer-->
-
 <!-- smooth scrolling -->
 	<script type="text/javascript">
 		$(document).ready(function() {
