@@ -93,6 +93,8 @@
 				role="tab" aria-controls="nav-home" aria-selected="true">Quản lý sản phẩm</button>
 				<button class="nav-link" id="nav-image-tab" data-bs-toggle="tab" data-bs-target="#nav-image" type="button" role="tab"
 					aria-controls="nav-profile" aria-selected="false">Quản lý hình ảnh</button>
+				<button class="nav-link" id="nav-categories-tab" data-bs-toggle="tab" data-bs-target="#nav-categories" type="button" role="tab"
+				aria-controls="nav-profile" aria-selected="false">Quản lý loại sản phẩm</button>
 			</div>
 		</nav>
 		<div class="tab-content" id="nav-tabContent">
@@ -315,6 +317,91 @@
 											  <p class="file-return"></p>
 										</div>
 		
+										<div class="text-center">
+											<button formaction="/admin/sanpham/them" class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
+											<button formaction="/admin/sanpham/sua" class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
+											<button formaction="/admin/sanpham/xoa/${sp.masp}" class="btn bg-gradient-info my-4 mb-2">Xóa</button>
+											<button formaction="/admin/sanpham/moi" class="btn bg-gradient-danger my-4 mb-2">Mới</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="nav-categories" role="tabpanel"  aria-labelledby="nav-categories-tab">
+				<div class="container-fluid py-4">
+					<div class="row">
+						<div class="col-12">
+							<div class="card my-4">
+								<div
+									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+									<div
+										class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+										<h6 class="text-white text-capitalize ps-3">Danh Sách Loại Sản Phẩm</h6>
+									</div>
+								</div>
+								<div class="card-body px-0 pb-2">
+									<div class="table-responsive p-0">
+										<table class="table align-items-center mb-0">
+											<thead>
+												<tr>
+													<th
+														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mã Loại</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tên Loại</th>
+													<th class="text-secondary opacity-7"></th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+													<p class="text-center text-sm font-weight-bold">ma loai</p>
+													</td>
+													<td>
+															<div class="justify-content-center">
+																<h6 class="text-center mb-0 text-sm">ten loai</h6>
+															</div>
+													</td>
+													<td class="align-middle text-center">
+														<a href="/admin/sanpham/edit/${sp.masp}" class="text-secondary font-weight-bold text-xs mx-1">Edit</a>
+														<a href="/admin/sanpham/edit/${sp.masp}" class="text-secondary font-weight-bold text-xs">Del</a>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="text-center mt-3">
+											<a href="/admin/sanpham?p=0" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-solid fa-backward-step"></i></a>
+											<a href="/admin/sanpham?p=${page.number-1}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-backward"></i> </a>
+											<a href="/admin/sanpham?p=${page.number+1}" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-forward"></i> </a>
+											<a href="/admin/sanpham?p=${page.totalPages-1}" class="ms-1" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<div class="card my-4">
+								<div
+									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+									<div
+										class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+										<h6 class="text-white text-capitalize ps-3">Thông Tin Chi Tiết</h6>
+									</div>
+								</div>
+								<div class="card-body px-0 pb-2" >
+									<form action="/admin/sanpham" modelAttribute="sp"  class="text-start" style="padding: 0 200px;">
+										<div class="input-group input-group-outline mb-3">
+											<label class="form-label">Mã Loại</label>
+											 <input path="tensp" type="text" class="form-control"/>
+										</div>
+										<div class="input-group input-group-outline mb-3">
+											<label class="form-label">Tên Loại</label>
+											 <input path="tensp" type="text" class="form-control"/>
+										</div>
 										<div class="text-center">
 											<button formaction="/admin/sanpham/them" class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
 											<button formaction="/admin/sanpham/sua" class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
