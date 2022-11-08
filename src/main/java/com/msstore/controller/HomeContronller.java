@@ -13,11 +13,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-<<<<<<< HEAD
-=======
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
->>>>>>> c95f7e2a594848dacc393c032484c8bd5823106d
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.msstore.DAO.ChiTIetDonHangDAO;
@@ -26,8 +21,6 @@ import com.msstore.DAO.HinhAnhDAO;
 import com.msstore.DAO.LoaiSPDAO;
 import com.msstore.DAO.SanPhamDAO;
 import com.msstore.DAO.TaiKhoanDAO;
-import com.msstore.Entity.ChiTietDonHang;
-import com.msstore.Entity.DonHang;
 import com.msstore.Entity.HinhAnh;
 import com.msstore.Entity.LoaiSP;
 import com.msstore.Entity.SanPham;
@@ -49,12 +42,6 @@ public class HomeContronller {
 	
 	@Autowired
 	TaiKhoanDAO tkDAO;
-	
-	@Autowired
-	DonHangDAO dhDAO;
-	
-	@Autowired
-	ChiTIetDonHangDAO ctdhDAO;
 	
 	@Autowired
 	DonHangDAO dhDAO;
@@ -98,11 +85,7 @@ public class HomeContronller {
 		return "client/check-out-history";
 	}
 	
-<<<<<<< HEAD
-=======
-	
-	
->>>>>>> c95f7e2a594848dacc393c032484c8bd5823106d
+
 	@GetMapping("/login")
 	public String doGetLogin() {
 		return "client/login";
