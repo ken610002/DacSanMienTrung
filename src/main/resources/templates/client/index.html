@@ -64,7 +64,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 <body>
 	<div th:replace="/client/header"></div>
-	
+
 	<div class="header">
 		<div class="container">
 			<div class="logo">
@@ -72,7 +72,8 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			</div>
 			<div class="head-t">
 				<ul class="card">
-					<li><a href="/home/check-out/history"><i class="fa fa-heart" aria-hidden="true"></i>Lịch sử đơn hàng</a></li>
+					<li><a href="/home/check-out/history"><i class="fa fa-heart" aria-hidden="true"></i>Lịch sử đơn
+							hàng</a></li>
 					<li><a href="/home/login"><i class="fa fa-user" aria-hidden="true"></i>Đăng nhập</a></li>
 					<li><a href="/home/register"><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng ký</a></li>
 					<li><a href="account.html"><i class="fa fa-user" aria-hidden="true"></i>Tài khoản</a></li>
@@ -103,8 +104,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 										<div class="col-sm-3">
 											<ul class="multi-column-dropdown">
 												<th:block th:each="categori : ${categoris}">
-													<li><a th:href="|/product/${categori.tenLoai}|"><i class="fa fa-angle-right"
-																aria-hidden="true" data-user="${categori.tenLoai}"
+													<li><a th:href="|/product/${categori.tenLoai}|"><i
+																class="fa fa-angle-right" aria-hidden="true"
+																data-user="${categori.tenLoai}"
 																th:text="${categori.tenLoai}"></i></a></li>
 												</th:block>
 											</ul>
@@ -140,9 +142,10 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<h3>Sản phẩm miền trung chúng tôi sẽ đêm lại cho bạn những trải nghiệm tuyệt vời </h3>
 				<div class="search-form">
 					<form action="/product/search" method="post">
-						<input name="Keywords"  type="text" placeholder="Tìm kiếm..." style="width: 90%;">
-						<button class="btn btn-default"><i class="fa fa-search " style="height: 20px; width: 25px;"></i></button>
-						
+						<input name="Keywords" type="text" placeholder="Tìm kiếm..." style="width: 90%;">
+						<button class="btn btn-default"><i class="fa fa-search "
+								style="height: 20px; width: 25px;"></i></button>
+
 					</form>
 				</div>
 			</div>
@@ -167,16 +170,19 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<div class=" tab-content tab-content-t ">
 					<div class="tab-pane active text-style" id="tab1">
 						<div class=" con-w3l">
-							<th:block th:each="product : ${products}" >
+							<th:block th:each="product : ${products}">
 								<div class="col-md-3 m-wthree" style="margin-top: 20px;">
 									<div class="col-m" th:with="image=${product.donGia}">
-										<th:block th:each="img : ${images}" >
-										<a th:if="${img.sp.maSP == product.maSP}" th:data-img="'/images/'+${img.tenHinh}" href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
-											<img style="height:108.41px"  th:src="@{'/images/'+${img.tenHinh}}" class="img-responsive" alt="">
-											<div class="offer"> 
-												<p><span>New</span></p>
-											</div>
-										</a>
+										<th:block th:each="img : ${images}">
+											<a th:if="${img.sp.maSP == product.maSP}"
+												th:data-img="'/images/'+${img.tenHinh}" href="#" data-toggle="modal"
+												data-target="#myModal1" class="offer-img">
+												<img style="height:108.41px" th:src="@{'/images/'+${img.tenHinh}}"
+													class="img-responsive" alt="">
+												<div class="offer">
+													<p><span>New</span></p>
+												</div>
+											</a>
 										</th:block>
 										<div class="mid-1">
 											<div class="women">
@@ -192,11 +198,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 											</div>
 											<div class="add">
 												<button class="btn btn-danger my-cart-btn my-cart-b "
-													th:data-id ="${product.maSP}"
-													th:data-name ="${product.tenSP}"
-													th:data-price ="${product.donGia}"
-													data-summary="summary 1" 
-													data-quantity="1" >Thêm Vào Giỏ Hàng</button>
+													th:data-id="${product.maSP}" th:data-name="${product.tenSP}"
+													th:data-price="${product.donGia}" data-summary="summary 1"
+													data-quantity="1">Thêm Vào Giỏ Hàng</button>
 											</div>
 										</div>
 									</div>
@@ -229,13 +233,16 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 								<div class="col-md-3 m-wthree" style="margin-top: 20px;">
 									<div class="col-m">
 										<th:block th:each="img,iter : ${images}">
-										<a th:if="${img.sp.maSP == product.group.maSP}" th:data-img="'/images/'+${img.tenHinh}" href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
-											<img style="height:108.41px" th:src="@{'/images/'+${img.tenHinh}}" class="img-responsive" alt="">
-											<div class="offer"> 
-												<p><span>Special </span></p>
-												<p th:text="${iter.size}"></p>
-											</div>
-										</a>
+											<a th:if="${img.sp.maSP == product.group.maSP}"
+												th:data-img="'/images/'+${img.tenHinh}" href="#" data-toggle="modal"
+												data-target="#myModal1" class="offer-img">
+												<img style="height:108.41px" th:src="@{'/images/'+${img.tenHinh}}"
+													class="img-responsive" alt="">
+												<div class="offer">
+													<p><span>Special </span></p>
+													<p th:text="${iter.size}"></p>
+												</div>
+											</a>
 										</th:block>
 										<div class="mid-1">
 											<div class="women">
@@ -251,11 +258,10 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 												<div class="clearfix"></div>
 											</div>
 											<div class="add">
-												<button class="btn btn-danger my-cart-btn my-cart-b " 
-													th:data-id ="${product.group.maSP}"
-													th:data-name ="${product.group.tenSP}"
-													th:data-price ="${product.group.donGia}"
-													data-summary="summary 1" 
+												<button class="btn btn-danger my-cart-btn my-cart-b "
+													th:data-id="${product.group.maSP}"
+													th:data-name="${product.group.tenSP}"
+													th:data-price="${product.group.donGia}" data-summary="summary 1"
 													data-quantity="1">Thêm Vào Giỏ Hàng</button>
 											</div>
 										</div>
