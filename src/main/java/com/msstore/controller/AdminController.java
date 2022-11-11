@@ -21,11 +21,6 @@ public class AdminController {
 		return "admin/account";
 	}
 	
-	@RequestMapping("/product")
-	public String product() {
-		return "admin/product";
-	}
-	
 	@RequestMapping("/report")
 	public String report() {
 		return "admin/report";
