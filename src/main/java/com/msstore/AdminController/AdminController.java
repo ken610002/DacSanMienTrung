@@ -1,4 +1,4 @@
-package com.msstore.controller;
+package com.msstore.AdminController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,11 +19,6 @@ public class AdminController {
 	@RequestMapping("/account")
 	public String account() {
 		return "admin/account";
-	}
-	
-	@RequestMapping("/product")
-	public String product() {
-		return "admin/product";
 	}
 	
 	@RequestMapping("/report")
