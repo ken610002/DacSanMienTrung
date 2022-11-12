@@ -8,7 +8,7 @@
 	<link rel="icon" type="image/png" href="/assets/img/favicon.png">
 
 
-	<title>Sản Phẩm</title>
+	<title>Sản Phẩm - Loại Sản Phẩm</title>
 
 	<!--     Fonts and icons     -->
 	<link rel="stylesheet" type="text/css"
@@ -82,24 +82,13 @@
 			</div>
 		</nav>
 		<!-- End Navbar -->
-
-		<nav>
-			<div class="nav nav-tabs" id="nav-tab" role="tablist">
-				<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
-					type="button" role="tab" aria-controls="nav-home" aria-selected="true">Quản lý sản phẩm</button>
-				<button class="nav-link" id="nav-image-tab" data-bs-toggle="tab" data-bs-target="#nav-image"
-					type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Quản lý hình ảnh</button>
-			</div>
-		</nav>
-		<div class="tab-content" id="nav-tabContent">
-			<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 				<div class="container-fluid py-4">
 					<div class="row">
 						<div class="col-12">
 							<div class="card my-4">
 								<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 									<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-										<h6 class="text-white text-capitalize ps-3">Danh Sách Sản Phẩm</h6>
+										<h6 class="text-white text-capitalize ps-3">Danh Sách Loại Sản Phẩm</h6>
 									</div>
 								</div>
 								<div class="card-body px-0 pb-2">
@@ -108,85 +97,40 @@
 											<thead>
 												<tr>
 													<th
-														class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-														Mã Sản Phẩm</th>
-													<th
-														class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-														Tên Sản Phẩm</th>
+														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+														Mã Loại</th>
 													<th
 														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-														Số Lượng</th>
-													<th
-														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-														Đơn Giá</th>
-													<th
-														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-														Tình Trạng</th>
+														Tên Loại</th>
 													<th class="text-secondary opacity-7"></th>
 												</tr>
 											</thead>
 											<tbody>
-												<th:block th:each="product : ${products}">
-													<tr>
-														<td>
-															<p class="text-xs font-weight-bold mb-0 ms-3"
-																th:text="${product.maSP}"></p>
-														</td>
-														<td>
-															<div class="d-flex px-2 py-1">
-
-																<div class="d-flex flex-column justify-content-center">
-																	<h6 class="mb-0 text-sm" th:text="${product.tenSP}">
-																	</h6>
-																</div>
-															</div>
-														</td>
-														<td class="align-middle text-center text-sm">
-															<h6 class="text-xs font-weight-bold mb-0 text-secondary"
-																th:text="${product.soLuong}"></h6>
-														</td>
-														<td class="align-middle text-center"><span
-																class="text-secondary text-xs font-weight-bold"
-																th:text="${product.donGia}"></span>
-														</td>
-														<td class="align-middle text-center">
-															<th:block th:each="img : ${images}">
-																<div th:if="${img.sp.maSP == product.maSP}">
-																	<img th:src="@{'/images/'+${img.tenHinh}}"
-																		class="avatar avatar-sm me-3 border-radius-lg ms-3">
-																</div>
-															</th:block>
-														</td>
-														<td class="align-middle">
-															<a th:href="@{|/admin/product/edit/${product.maSP}|}"
-																class="text-secondary font-weight-bold text-xs mx-1">Edit</a>
-															<a th:href="@{|/admin/product/delete/${product.maSP}|}"
-																class="text-secondary font-weight-bold text-xs">Del</a>
-														</td>
-													</tr>
-												</th:block>
+												<tr th:each="loaisp : ${listLoaiSP}">
+													<td>
+														<p th:text="${loaisp.maLoai}" class="text-center text-sm font-weight-bold"></p>
+													</td>
+													<td>
+														<div class="justify-content-center">
+															<h6 th:text="${loaisp.tenLoai}" class="text-center mb-0 text-sm"></h6>
+														</div>
+													</td>
+													<td class="align-middle text-center">
+														<a th:href="|/admin/categories/edit/${loaisp.maLoai}|"
+															class="text-secondary font-weight-bold text-xs mx-1">Edit</a>
+														<a th:href="|/admin/categories/delete/${loaisp.maLoai}|"
+															class="text-secondary font-weight-bold text-xs">Del</a>
+													</td>
+												</tr>
 											</tbody>
 										</table>
-										<div class="text-center mt-3">
-											<a th:href="@{|/admin/product?page=0|}" class="mx-2"
-												style="text-transform: uppercase; font-weight: bold;"><i
-													class="fa-solid fa-backward-step"></i></a>
-											<a th:href="@{|/admin/product?page=${products.getNumber() > 0 ? products.getNumber() - 1 : 0}|}"
-												class=" mx-2" style="text-transform: uppercase; font-weight: bold;"><i
-													class="fa fa-solid fa-backward"></i> </a>
-											<a th:href="@{|/admin/product?page=${products.getNumber() < products.getTotalPages() -1 ? products.getNumber() + 1 : products.getTotalPages() -1}|}"
-												class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i
-													class="fa fa-solid fa-forward"></i> </a>
-											<a th:href="@{|/admin/product?page=${products.getTotalPages() - 1}|}"
-												class="ms-1" style="text-transform: uppercase; font-weight: bold;"><i
-													class="fa-sharp fa-solid fa-forward-step"></i> </a>
-										</div>
+
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="row" th:if="${product != null}">
+					<div class="row" th:if="${loaisp != null}">
 						<div class="col-12">
 							<div class="card my-4">
 								<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -195,183 +139,24 @@
 									</div>
 								</div>
 								<div class="card-body px-0 pb-2">
-									<form method="post" class="text-start" style="padding: 0 200px;"
-										th:object="${product}">
-										<div class="row">
-											<th:block th:each="img : ${images}">
-												<div th:if="${img.sp.maSP == product.maSP}">
-													<img th:src="@{'/images/'+${img.tenHinh}}"
-														class="avatar avatar-sm me-3 border-radius-lg ms-3">
-												</div>
-											</th:block>
-										</div>
-										<div class="row">
-											<div class="input-group input-group-outline mb-3">
-												<label class="mt-2">Loại Sản Phẩm</label>
-												<br>
-												<select th:field="*{loaiSP.maLoai}" class=" form-control ms-2">
-													<option value="">Hãy chọn loại sản phẩm</option>
-													<th:block th:each="categori : ${categoris}">
-														<option th:value="${categori.maLoai}"
-															th:text="${categori.tenLoai}"
-															th:selected="${categori.maLoai == product.loaiSP.maLoai}">
-														</option>
-													</th:block>
-												</select>
-											</div>
-										</div>
-										<div class="input-group input-group-outline mb-3">
-											<label class="form-label">Tên Sản Phẩm</label>
-											<input type="text" class="form-control" name="tenSP" th:field="*{tenSP}" />
-										</div>
-										<div class="row">
-											<div class="col-6">
-												<div class="input-group input-group-outline">
-													<label class="form-label">Số Lượng</label>
-													<input type="number" class="form-control" name="soLuong"
-														th:field="*{soLuong}" />
-												</div>
-											</div>
-											<div class="col-6">
-												<div class="input-group input-group-outline ">
-													<label class="form-label">Đơn Giá</label>
-													<input type="text" class="form-control" name="donGia"
-														th:field="*{donGia}" />
-												</div>
-											</div>
-										</div>
-										<div class="input-group input-group-outline mt-3">
-											<label class="form-label">Mô Tả</label>
-											<input type="text" class="form-control" name="moTa" th:field="*{moTa}" />
-										</div>
-
-										<div class="text-center">
-											<button th:formaction="@{/admin/product/create}"
-												class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
-											<button th:formaction="@{|/admin/product/update/${product.maSP}|}"
-												class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
-											<button th:formaction="@{|/admin/product/delete/${product.maSP}|}"
-												class="btn bg-gradient-info my-4 mb-2">Xóa</button>
-											<button th:formaction="@{/admin/product/reset}"
-												class="btn bg-gradient-danger my-4 mb-2">Mới</button>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="tab-pane fade" id="nav-image" role="tabpanel" aria-labelledby="nav-image-tab">
-				<div class="container-fluid py-4">
-					<div class="row">
-						<div class="col-12">
-							<div class="card my-4">
-								<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-									<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-										<h6 class="text-white text-capitalize ps-3">Danh Sách Hình Ảnh</h6>
-									</div>
-								</div>
-								<div class="card-body px-0 pb-2">
-									<div class="table-responsive p-0">
-										<table class="table align-items-center mb-0">
-											<thead>
-												<tr>
-													<th
-														class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-														Mã Hình</th>
-													<th
-														class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-														Tên Sản Phẩm</th>
-													<th
-														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-														Hình Ảnh</th>
-													<th class="text-secondary opacity-7"></th>
-												</tr>
-											</thead>
-											<tbody>
-												<c:forEach var="sp" items="${page.content}">
-													<tr>
-														<td>
-															<p class="text-xs font-weight-bold mb-0 ms-3">ma sp}</p>
-														</td>
-														<td>
-															<div class="d-flex px-2 py-1">
-
-																<div class="d-flex flex-column justify-content-center">
-																	<h6 class="mb-0 text-sm">ten sp</h6>
-																</div>
-															</div>
-														</td>
-														<td class="align-middle text-center text-sm">
-															<h6 class="text-xs font-weight-bold mb-0 text-secondary">so
-																luong</h6>
-														</td>
-														<td class="align-middle">
-															<a href="/admin/sanpham/edit/${sp.masp}"
-																class="text-secondary font-weight-bold text-xs mx-1">Edit</a>
-															<a href="/admin/sanpham/edit/${sp.masp}"
-																class="text-secondary font-weight-bold text-xs">Del</a>
-														</td>
-													</tr>
-												</c:forEach>
-											</tbody>
-										</table>
-										<div class="text-center mt-3">
-											<a href="/admin/sanpham?p=0" class="mx-2"
-												style="text-transform: uppercase; font-weight: bold;"><i
-													class="fa-solid fa-backward-step"></i></a>
-											<a href="/admin/sanpham?p=${page.number-1}" class=" mx-2"
-												style="text-transform: uppercase; font-weight: bold;"><i
-													class="fa fa-solid fa-backward"></i> </a>
-											<a href="/admin/sanpham?p=${page.number+1}" class="mx-2"
-												style="text-transform: uppercase; font-weight: bold;"><i
-													class="fa fa-solid fa-forward"></i> </a>
-											<a href="/admin/sanpham?p=${page.totalPages-1}" class="ms-1"
-												style="text-transform: uppercase; font-weight: bold;"><i
-													class="fa-sharp fa-solid fa-forward-step"></i> </a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12">
-							<div class="card my-4">
-								<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-									<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-										<h6 class="text-white text-capitalize ps-3">Thông Tin Chi Tiết</h6>
-									</div>
-								</div>
-								<div class="card-body px-0 pb-2">
-									<form action="/admin/sanpham" modelAttribute="sp" class="text-start"
+									<form action="/admin/sanpham" th:object="${loaisp}"  class="text-start"
 										style="padding: 0 200px;">
 										<div class="input-group input-group-outline mb-3">
-											<label class="mt-2">Tên Sản Phẩm</label>
-											<br>
-											<select path="maloai" class="form-control ms-2">
-												<option value="">SamSung</option>
-
-											</select>
+											<label class="form-label">Mã Loại</label>
+											<input th:field="*{maLoai}" type="text" class="form-control" />
 										</div>
-										<div class="input-group input-group-outline my-3 ">
-											<div class="input-file-container">
-												<input path="hinh" class="input-file" id="my-file" type="file" />
-												<label tabindex="0" for="my-file" class="input-file-trigger">Chọn Hình
-													Ảnh</label>
-											</div>
-											<p class="file-return"></p>
+										<div class="input-group input-group-outline mb-3">
+											<label class="form-label">Tên Loại</label>
+											<input th:field="*{tenLoai}" type="text" class="form-control" />
 										</div>
-
 										<div class="text-center">
-											<button formaction="/admin/sanpham/them"
+											<button formaction="/admin/categories/create"
 												class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
-											<button formaction="/admin/sanpham/sua"
+											<button th:formaction="@{|/admin/categories/update/${loaisp.maLoai}|}"
 												class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
-											<button formaction="/admin/sanpham/xoa/${sp.masp}"
+											<button th:formaction="@{|/admin/categories/delete/${loaisp.maLoai}|}"
 												class="btn bg-gradient-info my-4 mb-2">Xóa</button>
-											<button formaction="/admin/sanpham/moi"
+											<button formaction="/admin/categories/reset"
 												class="btn bg-gradient-danger my-4 mb-2">Mới</button>
 										</div>
 									</form>
@@ -380,9 +165,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
-
-		</div>
 
 		<footer class="footer py-4  ">
 			<div class="container-fluid">

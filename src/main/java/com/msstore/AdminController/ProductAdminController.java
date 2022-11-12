@@ -102,4 +102,5 @@ public class ProductAdminController {
 		model.addAttribute("product", product);
 		return "redirect:/admin/product";
 	}
+	
 }
