@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,8 +23,10 @@ import lombok.NoArgsConstructor;
 public class LoaiSP implements Serializable{
 	@Id
 	@Column(name="maloai")
+	@NotEmpty(message = "Mã loại không được để trống")
 	private String maLoai;
 	@Column(name="tenloai")
+	@NotEmpty(message = "Tên loại không được để trống")
 	private String tenLoai;
 	
 	@JsonIgnore

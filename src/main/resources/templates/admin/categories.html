@@ -130,7 +130,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row" th:if="${loaisp != null}">
+					<div class="row">
 						<div class="col-12">
 							<div class="card my-4">
 								<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -138,17 +138,21 @@
 										<h6 class="text-white text-capitalize ps-3">Thông Tin Chi Tiết</h6>
 									</div>
 								</div>
+								
 								<div class="card-body px-0 pb-2">
+								<h6 class="text-center text-danger" th:text="${message}"></h6>
 									<form action="/admin/sanpham" th:object="${loaisp}"  class="text-start"
 										style="padding: 0 200px;">
 										<div class="input-group input-group-outline mb-3">
 											<label class="form-label">Mã Loại</label>
 											<input th:field="*{maLoai}" type="text" class="form-control" />
 										</div>
+										<p th:if="${#fields.hasErrors('maLoai')}" th:errors="*{maLoai}" class="text-danger" ></p>
 										<div class="input-group input-group-outline mb-3">
 											<label class="form-label">Tên Loại</label>
 											<input th:field="*{tenLoai}" type="text" class="form-control" />
 										</div>
+										<p th:if="${#fields.hasErrors('tenLoai')}" th:errors="*{tenLoai}" class="text-danger"></p>
 										<div class="text-center">
 											<button formaction="/admin/categories/create"
 												class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
