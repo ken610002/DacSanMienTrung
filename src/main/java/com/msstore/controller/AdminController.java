@@ -15,11 +15,11 @@ public class AdminController {
 	public String login() {
 		return "admin/login";
 	}
-	
-	@RequestMapping("/account")
-	public String account() {
-		return "admin/account";
-	}
+//	@RequestMapping("/account")
+//	public String account() {
+//		
+//		return "admin/account";
+//	}
 	
 	@RequestMapping("/product")
 	public String product() {

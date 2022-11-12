@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,7 +30,8 @@ import lombok.NoArgsConstructor;
 public class TaiKhoan implements Serializable{
 	@Id
 	@Column(name="taikhoan")
-	private String taiKhoan;
+	@NotBlank(message="Tài khoản không được để trống")
+	public String taiKhoan;
 	@Column(name="matkhau")
 	private String matKhau;
 	@Column(name="hoten")
@@ -43,7 +46,8 @@ public class TaiKhoan implements Serializable{
 	private Date ngaySinh;
 	
 	
-	@ManyToOne @JoinColumn(name="maCV")
+	@ManyToOne 
+	@JoinColumn(name="maCV")
 	ChucVu cv;
 	@JsonIgnore
 	@OneToMany(mappedBy = "tk")
@@ -51,4 +55,6 @@ public class TaiKhoan implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "tk")
 	List<DonHang> donHang;
+	
+	
 }

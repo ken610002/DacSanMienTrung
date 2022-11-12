@@ -1,26 +1,35 @@
 
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="apple-touch-icon" sizes="76x76"
+	href="../assets/img/apple-icon.png">
 <link rel="icon" type="image/png" href="../assets/img/favicon.png">
 
 
 <title>Tài khoản</title>
 
 <!--     Fonts and icons     -->
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+<link rel="stylesheet" type="text/css"
+	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
 <!-- Nucleo Icons -->
 <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
 <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
 <!-- Font Awesome Icons -->
-<script src="https://kit.fontawesome.com/85b9f1f1eb.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/85b9f1f1eb.js"
+	crossorigin="anonymous"></script>
 <!-- Material Icons -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+	rel="stylesheet">
 <!-- CSS Files -->
-<link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
+<link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.0.2"
+	rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -47,11 +56,12 @@
 				<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
 					id="navbar">
 					<div class="ms-md-auto pe-md-3 d-flex align-items-center mt-3">
-						<form action="/admin/sanpham/page" modelAttribute="sp">
-							<div class="input-group input-group-outline">	
-								<label class="form-label">Type here...</label> 
-								<input path="tensp" value="${tensp}" type="text" class="form-control" style="height: 40px; "/>
-									<button class="btn bg-gradient-primary  ms-2"> Tìm kiếm</button>
+						<form action="/admin/account/seach" modelAttribute="sp">
+							<div class="input-group input-group-outline">
+								<label class="form-label">Type here...</label> <input
+									name="Keywords" path="tensp" value="" type="text" class="form-control"
+									style="height: 40px;" />
+								<button class="btn bg-gradient-primary  ms-2">Tìm kiếm</button>
 							</div>
 						</form>
 					</div>
@@ -92,75 +102,106 @@
 							class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 							<div
 								class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-								<h6 class="text-white text-capitalize ps-3">Danh Sách Tài Khoản</h6>
+								<h6 class="text-white text-capitalize ps-3">Danh Sách Tài
+									Khoản</h6>
 							</div>
 						</div>
 						<div class="card-body px-0 pb-2">
 							<div class="table-responsive p-0">
+
 								<table class="table align-items-center mb-0">
+
 									<thead>
 										<tr>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Họ Và Tên</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Mật khẩu</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ngày
+											<th
+												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tài
+												khoản</th>
+											<th
+												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Mật
+												khẩu</th>
+											<th
+												class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+											<th
+												class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SĐT</th>
+											<th
+												class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Địa
+												chỉ</th>
+											<th
+												class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ngày
 												Sinh</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-												SDT</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-												Địa Chỉ</th>
-											<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+
+											<th
+												class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
 												Chức Vụ</th>
 											<th class="text-secondary opacity-7"></th>
 										</tr>
 									</thead>
-									<tbody>										<tr>
+
+									<tbody>
+										<tr th:each="acc : ${accounts}">
 											<td>
 												<div class="d-flex px-2 py-1 ms-2">
 													<div class="d-flex flex-column justify-content-center">
-														<h6 class="mb-0 text-sm">ten</h6>
-														<p class="text-xs text-secondary mb-0">tai khoan</p>
+														<h6 class="mb-0 text-sm" th:text="${acc.hoTen}"></h6>
+														<p class="text-xs text-secondary mb-0"
+															th:text="${acc.taiKhoan}"></p>
 													</div>
 												</div>
 											</td>
 											<td>
-												<p class="text-xs font-weight-bold mb-0">pass</p>
+												<p class="text-xs font-weight-bold mb-0"
+													th:text="${acc.matKhau}"></p>
 											</td>
-											<td class="align-middle text-center text-sm">
-												<span class="text-secondary text-xs font-weight-bold">email</span>
-											</td>
+											<td class="align-middle text-center text-sm"><span
+												class="text-secondary text-xs font-weight-bold"
+												th:text="${acc.email}">email</span></td>
 											<td class="align-middle text-center"><span
-												class="text-secondary text-xs font-weight-bold">ngay sinh </span>
-											</td>
+												class="text-secondary text-xs font-weight-bold"
+												th:text="${acc.sdt}">sdt</span></td>
 											<td class="align-middle text-center"><span
-												class="text-secondary text-xs font-weight-bold">sdt</span>
-											</td>
+												class="text-secondary text-xs font-weight-bold"
+												th:text="${acc.diaChi}">dia chi</span></td>
 											<td class="align-middle text-center"><span
-												class="text-secondary text-xs font-weight-bold">dia chi</span>
-											</td>
+												class="text-secondary text-xs font-weight-bold"
+												th:text="${acc.ngaySinh}">ngaySinh</span></td>
+
 											<td class="align-middle text-center"><span
-												class="text-secondary text-xs font-weight-bold">chuc vu</span>
-											</td>
-											<td class="align-middle">
-											<a href="/admin/nhanvien/edit/${nv.taikhoan}" class="text-secondary font-weight-bold text-xs"
-												data-toggle="tooltip" data-original-title="Edit user">Edit </a>
-											<a href="/admin/nhanvien/edit/${nv.taikhoan}" class="text-secondary font-weight-bold text-xs ms-2"
-												data-toggle="tooltip" data-original-title="Edit user">Del </a>
-											</td>
+												class="text-secondary text-xs font-weight-bold">chuc
+													vu</span></td>
+											<td class="align-middle"><a
+												th:href="|/admin/account/edit/${acc.taiKhoan}|"
+												class="text-secondary font-weight-bold text-xs"
+												data-toggle="tooltip" data-original-title="Edit user">Edit
+											</a> <a th:href="|/admin/account/delete/${acc.taiKhoan}|"
+												class="text-secondary font-weight-bold text-xs ms-2"
+												data-toggle="tooltip" data-original-title="Edit user">Del
+											</a></td>
 										</tr>
 									</tbody>
+
 								</table>
 								<div class="text-center mt-3">
-									<a href="/admin/sanpham?p=0" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-solid fa-backward-step"></i></a>
-									<a href="/admin/sanpham?p=${page.number-1}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-backward"></i> </a>
-									<a href="/admin/sanpham?p=${page.number+1}" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-forward"></i> </a>
-									<a href="/admin/sanpham?p=${page.totalPages-1}" class="ms-1" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
+									<a th:href="|/admin/account?p=0|" class="mx-2"
+										style="text-transform: uppercase; font-weight: bold;"><i
+										class="fa-solid fa-backward-step"></i></a> <a
+										th:href="|/admin/account?p=${accounts.number-1}|"
+										class=" mx-2"
+										style="text-transform: uppercase; font-weight: bold;"><i
+										class="fa fa-solid fa-backward"></i> </a> <a
+										th:href="|/admin/account?p=${accounts.number+1}|" class="mx-2"
+										style="text-transform: uppercase; font-weight: bold;"><i
+										class="fa fa-solid fa-forward"></i> </a> <a
+										th:href="|/admin/account?p=${accounts.totalPages-1}|"
+										class="ms-1"
+										style="text-transform: uppercase; font-weight: bold;"><i
+										class="fa-sharp fa-solid fa-forward-step"></i> </a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			
 			<div class="row">
 				<div class="col-12">
 					<div class="card my-4">
@@ -168,70 +209,82 @@
 							class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 							<div
 								class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-								<h6 class="text-white text-capitalize ps-3">Thông Tin Chi Tiết</h6>
+								<h6 class="text-white text-capitalize ps-3">Thông Tin Chi
+									Tiết</h6>
 							</div>
 						</div>
-						<div class="card-body px-0 pb-2" >
-							<form action="/admin/nhanvien" modelAttribute="nv" class="text-start" style="padding: 0 200px;">
+						<div class="card-body px-0 pb-2">
+							<form action="/admin/account" th:object="${tk}" method="post"
+								class="text-start" style="padding: 0 200px;">
 								<div class="row">
 									<div class="col-6">
 										<div class="input-group input-group-outline my-3 ">
-											<label class="form-label">Tài khoản</label> 
-											<input path="taikhoan" type="text" class="form-control"/>
+											<label class="form-label">Tài khoản</label>
+											<input th:field="*{taiKhoan}" type="text" class="form-control" />
+											<p th:if="${#fields.hasErrors('taiKhoan')}" th:errors=*{taiKhoan}></p> 	
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="input-group input-group-outline my-3 ">
-											<label class="form-label">Mật khẩu</label> 
-											<input path="matkhau" type="password" class="form-control"/>
+											<label class="form-label">Mật khẩu</label> <input
+												name="matKhau" th:field="*{matKhau}" type="password"
+												class="form-control" />
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-6">
 										<div class="input-group input-group-outline mb-3">
-											<label class="form-label">Họ Và Tên</label>
-											 <input path="hoten" type="text" class="form-control"/>
+											<label class="form-label">Họ Và Tên</label> <input
+												name="hoTen" path="hoten" type="text" class="form-control" />
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="input-group input-group-outline mb-3">
-											<label style="margin-right: 10px; margin-top: 10px;">Ngày Sinh</label> 
-											<input path="ngaysinh" type="date" class="form-control"/>
+											<label style="margin-right: 10px; margin-top: 10px;">Ngày
+												Sinh</label> <input path="ngaysinh" type="date" name="ngaySinh"
+												class="form-control" />
 										</div>
 									</div>
 								</div>
 								<div class="input-group input-group-outline">
-									<label style="margin-right: 20px;">Chức Vụ:</label> 
-										<div class="">
-											<input type="radio" path="chucvu" name="chucvu" value="ql"/><span class="ms-1">Quản Lí</span>
-											<input type="radio" path="chucvu" name="chucvu" value="nv" class="ms-3"/><span class="ms-1">Nhân Viên</span>
-											<input type="radio" path="chucvu" name="chucvu" value="kh" class="ms-3"/><span class="ms-1">Khách Hàng</span>
+									<label style="margin-right: 20px;">Chức Vụ:</label>
+									<div class="">
+										<input type="radio" path="chucvu" value="3" name="cv" /><span
+											class="ms-1">Quản Lí</span> <input type="radio" path="chucvu"
+											value="2" class="ms-3" name="cv" /><span class="ms-1">Nhân
+											Viên</span> <input type="radio" path="chucvu" value="1" class="ms-3"
+											name="cv" /><span class="ms-1">Khách Hàng</span>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-6">
 										<div class="input-group input-group-outline ">
-											<label class="form-label">SĐT</label> 
-											<input path="sdt" type="text" class="form-control"/>
+											<label class="form-label">SĐT</label> <input path="sdt"
+												name="sdt" type="text" class="form-control" />
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="input-group input-group-outline ">
-											<label class="form-label">Email</label> 
-											<input path="email" type="email" class="form-control"/>
+											<label class="form-label">Email</label> <input path="email"
+												name="email" type="email" class="form-control" />
 										</div>
 									</div>
 								</div>
 								<div class="input-group input-group-outline my-3 ">
-									<label class="form-label">Địa Chỉ</label> 
-									<input path="diachi" type="text" class="form-control"/>
+									<label class="form-label">Địa Chỉ</label> <input path="diachi"
+										name="diaChi" type="text" class="form-control" />
 								</div>
 								<div class="text-center">
-									<button formaction="/admin/nhanvien/them" class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
-									<button formaction="/admin/nhanvien/sua" class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
-									<button formaction="/admin/nhanvien/xoa/${nv.taikhoan}" class="btn bg-gradient-info my-4 mb-2">Xóa</button>
-									<button formaction="/admin/nhanvien/moi" class="btn bg-gradient-danger my-4 mb-2">Mới</button>
+									<button formaction="/admin/account/create"
+										class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
+									<button formaction="/admin/account/update"
+										class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
+									<a th:href="|/admin/account/delete/${tk.taiKhoan}|"
+										class="btn bg-gradient-info my-4 mb-2">Xóa</a>
+
+									<button formaction="/admin/nhanvien/moi"
+										class="btn bg-gradient-danger my-4 mb-2">Mới</button>
 								</div>
 
 							</form>
