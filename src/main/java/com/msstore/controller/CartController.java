@@ -89,8 +89,6 @@ public class CartController {
 				}
 				if(key == "price") ct.setDonGia(Double.parseDouble(String.valueOf(map.get(key))));
 				if(key == "total")  total += Double.parseDouble(String.valueOf(map.get(key)));
-				
-				
 	        }
 			ctlist.add(ct);
 

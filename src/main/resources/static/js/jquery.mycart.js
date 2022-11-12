@@ -33,16 +33,31 @@
     return objToReturn;
   }());
 
-
+	function getCookie(cname) {
+    var name = cname + '=';
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return '';
+	}
   var ProductManager = (function(){
     var objToReturn = {};
+    var taiKhoan = getCookie('taiKhoan');
 
     /*
     PRIVATE
     */
     localStorage.products = localStorage.products ? localStorage.products : "";
     localStorage.username = localStorage.username ? localStorage.username : "";
-    localStorage.username = "NVA1999";
+    localStorage.username = taiKhoan;
 
     var getIndexOfProduct = function(id){
       var productIndex = -1;
@@ -378,8 +393,8 @@
         await drawOrderDetailModal(id);
         $('#'+idOrderDetailModal).modal("show");
     });
-    //Thanh toán
     
+    //Thanh toán
     var drawHeaderTableCheckout = function(){
       $('#'+idCheckoutPackage).children(':eq(1)').after( ProductManager.getAllProducts().length ?
           '<table class="table" id="check-out-table">'+

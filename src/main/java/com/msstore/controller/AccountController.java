@@ -19,6 +19,7 @@ import com.msstore.DAO.TaiKhoanDAO;
 import com.msstore.Entity.ChucVu;
 import com.msstore.Entity.MailInfo;
 import com.msstore.Entity.TaiKhoan;
+import com.msstore.Service.CookieService;
 import com.msstore.Service.MailerService;
 import com.msstore.Service.SessionService;
 
@@ -34,6 +35,9 @@ public class AccountController {
 	
 	@Autowired
 	SessionService session;
+	
+	@Autowired
+	CookieService cookie;
 	
 	@Autowired
 	MailerService mailService;
@@ -60,6 +64,7 @@ public class AccountController {
 	public String logout(Model model, HttpSession session) {
 		session.removeAttribute("taiKhoan");
 		session.removeAttribute("matKhau");
+		cookie.remove("taiKhoan");
 		return "client/login";
 	}
 
@@ -113,6 +118,7 @@ public class AccountController {
 				model.addAttribute("message", "Invalid password");
 				return "client/login";
 			}else {
+				cookie.add("taiKhoan", taiKhoan, 5);
 				session.setAttribute("taiKhoan", taiKhoan);
 				model.addAttribute("message", "Login successfylly");
 				return "redirect:/home";
