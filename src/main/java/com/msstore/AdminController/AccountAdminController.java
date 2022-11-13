@@ -1,4 +1,4 @@
-package com.msstore.controller;
+package com.msstore.AdminController;
 
 
 import java.util.Optional;
