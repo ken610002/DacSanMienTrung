@@ -115,6 +115,16 @@ public class AccountAdminController {
 		return "admin/account";
 		
 	}
-	
+	@RequestMapping("/reset")
+	public String reset(Model model) {
+		TaiKhoan taikhoan = new TaiKhoan();
+		taikhoan.setTaiKhoan("");
+		taikhoan.setMatKhau("");
+		taikhoan.setHoTen("");
+		taikhoan.setEmail("");
+		taikhoan.setSdt("");	
+		model.addAttribute("accounts", taikhoan);
+		return "redirect:/admin/account";
+	}
 	
 }
