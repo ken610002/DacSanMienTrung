@@ -32,13 +32,16 @@ public class DonHang implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="madon")
 	private long maDon;
+	
 	@Column(name="ngaytao")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date ngayTao = new Date();
+	
 	@Column(name="trangthai")
 	private int trangthai;
 	private double tong;
+	
 	@ManyToOne
 	@JoinColumn(name = "taikhoan")
 	TaiKhoan tk;

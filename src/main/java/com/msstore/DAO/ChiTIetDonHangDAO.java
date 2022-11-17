@@ -12,4 +12,8 @@ public interface ChiTIetDonHangDAO extends JpaRepository<ChiTietDonHang, CTDonHa
 	
 	@Query("SELECT o from ChiTietDonHang o where o.dh.maDon = ?1")
 	public List<ChiTietDonHang> getAllOrderDetail(long maDon);
+	
+//	@Query("SELECT o from ChiTietDonHang o where o.dh.maDon = ?1")
+//	public void deleteBymaDon(long maDon);
+	
 }

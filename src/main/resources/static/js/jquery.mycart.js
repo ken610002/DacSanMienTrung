@@ -368,7 +368,7 @@
       $checkoutHistoryTable.children().first().children().not(':first').empty();
       var orders = await getOrderAPI(localStorage.username);
       $.each(orders, function(){
-        var trangThai = this.trangthai == 1 ? 'Đã thanh toán' : 'Chưa thanh toán';
+        var trangThai = this.trangthai == 2 ? 'Đã thanh toán' : 'Chưa thanh toán';
         
         $checkoutHistoryTable.append(
           '<tr class="cross">'+

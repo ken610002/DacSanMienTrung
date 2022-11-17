@@ -78,12 +78,12 @@ public class CategoriesAdminController {
 	}
 //	
 	@RequestMapping("/categories/delete/{maloai}")
-	public String doPostDelete(@PathVariable("maloai") String maloai,Model model,
-			@ModelAttribute("loaisp") LoaiSP loaisp, @RequestParam("page") Optional<Integer> page) {
+	public String doPostDelete(Model model,@ModelAttribute("loaisp") LoaiSP loaisp,
+			@RequestParam("page") Optional<Integer> page, @PathVariable("maloai") String maloai) {
 		Pageable pageAble = PageRequest.of(page.orElse(0), 5);
 		Page<LoaiSP> listLoaiSP = lspDAO.findAll(pageAble);
 		
-		if(maloai.contains("")){
+		if(loaisp.getMaLoai().equalsIgnoreCase("")){
 			model.addAttribute("message", "Vui lòng chọn loại sản phẩm để xóa");
 			model.addAttribute("listLoaiSP", listLoaiSP);
 			return "admin/categories";

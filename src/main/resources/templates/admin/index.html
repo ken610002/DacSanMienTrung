@@ -93,61 +93,62 @@
 							<div class="table-responsive p-0">
 								<table class="table align-items-center mb-0">
 									<thead>
-										<tr>
+										<tr >
 											<th
-												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mã Đơn Hàng</th>
+												class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Mã Đơn Hàng</th>
 											<th
-												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Ngày Tạo</th>
+												class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-3">Ngày Tạo</th>
 											<th
-												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Họ Và Tên</th>
+												class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-3">Họ Và Tên</th>
 											<th
-												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Tổng Tiền</th>
+												class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-3">Tổng Tiền</th>
 											<th
-												class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Địa Chỉ</th>
+												class=" text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Địa Chỉ</th>
 											<th
-												class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Trạng Thái</th>											
+												class=" text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Trạng Thái</th>											
 											<th class="text-secondary opacity-7"></th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
+										<tr th:each="order : ${listdh}">
 											<td>
-												<p class="text-xs font-weight-bold mb-0 ms-3">madon</p>
+												<p class=" text-xs font-weight-bold mb-0 ms-5">[[${order.maDon}]]</p>
 											</td>
 											<td>
 												<div class="d-flex px-2 py-1">
 													
 													<div class="d-flex flex-column justify-content-center">
-														<h6 class="mb-0 text-xs text-xs font-weight-bold mb-0 text-secondary">ngaytao</h6>
+														<h6 class="mb-0 text-xs text-xs font-weight-bold mb-0 text-secondary">[[${order.ngayTao}]]</h6>
 													</div>
 												</div>
 											</td>
 											<td class="align-middle text-sm ">
-												<h6 class="text-xs font-weight-bold mb-0 text-secondary ms-2">hoten</h6>
+												<h6 class="text-xs font-weight-bold mb-0 text-secondary ms-2">[[${order.tk.hoTen}]]</h6>
 											</td>
 											<td class="align-middle "><span
-												class="text-secondary text-xs font-weight-bold ms-2">tongtien</span>
+												class="text-secondary text-xs font-weight-bold ms-2">[[${#numbers.formatDecimal(order.tong, 0, 'COMMA', 0, 'POINT')}]]</span>
 											</td>
 											<td class="align-middle "><span
-												class="text-secondary text-xs font-weight-bold ms-3">diachi</span>
+												class="text-secondary text-xs font-weight-bold ms-3">[[${order.tk.diaChi}]]</span>
 											</td>
 											<td class="align-middle "><span
-												class="text-secondary text-xs font-weight-bold ms-3">trangthai</span>
+												class="text-secondary text-xs font-weight-bold ms-3">[[${order.trangthai == 0 ?  'Đã thanh toán':'Chưa thanh toán'}]]</span>
 											</td>
 											<td class="align-middle">
-											<a href="/admin/khachhang/edit/${kh.taikhoankh}" class="text-secondary font-weight-bold text-xs"
+											<a th:href="@{|/admin/order/edit/${order.maDon}|}" class="text-secondary font-weight-bold text-xs"
 												data-toggle="tooltip" data-original-title="Edit user">Edit </a>
-											<a href="/admin/khachhang/edit/${kh.taikhoankh}" class="text-secondary font-weight-bold text-xs ms-2"
+											<a th:href="@{|/admin/order/delete/${order.maDon}|}" class="text-secondary font-weight-bold text-xs ms-2"
 												data-toggle="tooltip" data-original-title="Edit user">Del </a>
 											</td>
 										</tr>
 									</tbody>
 								</table>
 								<div class="text-center mt-3">
-									<a href="/admin/sanpham?p=0" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-solid fa-backward-step"></i></a>
-									<a href="/admin/sanpham?p=${page.number-1}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-backward"></i> </a>
-									<a href="/admin/sanpham?p=${page.number+1}" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-forward"></i> </a>
-									<a href="/admin/sanpham?p=${page.totalPages-1}" class="ms-1" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
+									<a th:href="@{|/admin/order?p=0|}" class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa-solid fa-backward-step"></i></a>
+									<a th:href="@{|/admin/order?p=${listdh.getNumber() > 0 ? listdh.getNumber() - 1 : 0}|}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-backward"></i> </a>
+									<a th:href="@{|/admin/order?p=${listdh.getNumber() < listdh.getTotalPages() -1 ? listdh.getNumber() + 1 : listdh.getTotalPages() -1}|}"
+										class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-forward"></i> </a>
+									<a th:href="@{|/admin/order?p=${listdh.getTotalPages() - 1}|}" class="ms-1" style="text-transform: uppercase; font-weight: bold;"><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
 								</div>
 							</div>
 						</div>
@@ -165,39 +166,43 @@
 							</div>
 						</div>
 						<div class="card-body px-0 pb-2">
-							<form action="" class="text-start" style="padding: 0 200px;">
+							<form action="/admin/order" th:object="${donhang}" class="text-start" method="post" style="padding: 0 200px;">
 								<div class="row">
 									<div class="col-6">
 										<div class="input-group input-group-outline ">
 											<label class="form-label">Mã Đơn Hàng </label> 
-											<input type="text" class="form-control">
+											<input th:field="*{maDon}" type="text" class="form-control">
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="input-group input-group-outline ">
 											<label class="form-label">Ngày Tạo</label> 
-											<input type="text" class="form-control">
+											<input th:field="*{ngayTao}" type="text" class="form-control">
 										</div>
 									</div>
 								</div>
 								<p class=" font-weight-bold text-center mt-3">Thông Tin Khách Hàng</p>
+									<div class="input-group input-group-outline mb-3">
+										<label class="form-label">Tài Khoản </label> 
+										<input th:field="*{tk.taiKhoan}" type="text" class="form-control">
+									</div>
 								<div class="row">
 									<div class="col-6">
 										<div class="input-group input-group-outline ">
 											<label class="form-label">Tên Khách hàng </label> 
-											<input type="text" class="form-control">
+											<input th:field="*{tk.hoTen}" type="text" class="form-control">
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="input-group input-group-outline ">
 											<label class="form-label">SĐT</label> 
-											<input type="text" class="form-control">
+											<input th:field="*{tk.sdt}" type="text" class="form-control">
 										</div>
 									</div>
 								</div>
 								<div class="input-group input-group-outline mt-3 ">
 									<label class="form-label">Địa Chỉ</label> 
-									<input type="text" class="form-control">
+									<input th:field="*{tk.diaChi}" type="text" class="form-control">
 								</div>
 
 								<p class=" font-weight-bold mb-0 text-center mt-3">Thông Tin Mua Hàng</p>
@@ -212,14 +217,14 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<th scope="row"><label class="ms-3 text-xs">SP100</label></th>
-											<td><label class="ms-3 text-xs">Iphone 13</label></td>
-											<td><input class="ms-3 text-xs " value="1"></td>
-											<td><label class="ms-3 text-xs">20.000.000 VNĐ</label></td>
+										<tr th:each="item : *{ctdh}">
+											<th scope="row"><label class="ms-3 text-xs" th:text="${item.sp.maSP}"></label></th>
+											<td><label class="ms-3 text-xs">[[${item.sp.tenSP}]]</label></td>
+											<td><input class="ms-3 text-xs" th:value="${item.soLuong}"></td>
+											<td><label class="ms-3 text-xs">[[${#numbers.formatDecimal(item.donGia, 0, 'COMMA', 0, 'POINT')}]] VNĐ</label></td>
 											<td><label class="ms-3 text-xs">Còn hàng</label></td>
 											<td class="align-middle">
-												<a href="javascript:;" class="text-secondary font-weight-bold text-xs"
+												<a th:href="@{|/admin/ctdh/delete/${item.sp.maSP}|}" class="text-secondary font-weight-bold text-xs"
 												data-toggle="tooltip" data-original-title="Edit user">Del 
 												</a>
 											</td>
@@ -232,8 +237,8 @@
 										<div class="input-group input-group-outline mb-3">
 											<label class="mt-2">Khuyến Mãi</label> 
 											<br>
-											<select path="maloai" class="form-control ms-2">
-												<option value="">SamSung</option>
+											<select  class="form-control ms-2">
+												<option value="1">10%</option>
 											</select>
 										</div>
 									</div>
@@ -241,18 +246,21 @@
 										<div class="input-group input-group-outline mb-3">
 											<label class="mt-2">Trạng Thái </label> 
 											<br>
-											<select path="maloai" class="form-control ms-2">
-												<option value="">Iphone</option>
+											<select th:field="*{trangthai}" class="form-control ms-2">
+												<option value="0">Đã thanh toán</option>
+												<option value="1">Chưa thanh toán</option>
 											</select>
 										</div>
 									</div>
 								</div>
-								<p class="text-sm font-weight-bold mb-0">Tổng Tiền: 20.000.000 VNĐ</p>
+								<th:block th:each="item : *{ctdh}">
+										<label class="form-label">Tổng Tiền</label> 
+										<input th:value="${(item.donGia*item.soLuong)}" name="tongtien" type="text">
+								</th:block>
 								<div class="text-center">
 									<button type="button" class="btn bg-gradient-primary my-4 mb-2">Xóa Đơn Hàng</button>
-									<button type="button" class="btn bg-gradient-info my-4 mb-2">Sửa Đơn Hàng</button>
-									<button type="button" class="btn bg-gradient-danger my-4 mb-2">Duyệt Đơn Hàng</button>
-									<button type="button" class="btn bg-gradient-secondary my-4 mb-2">Hủy Đơn Hàng</button>
+									<button formaction="/admin/order/update" type="submit" class="btn bg-gradient-info my-4 mb-2">Sửa Đơn Hàng</button>
+									<button formaction="/admin/order/reset" type="submit" class="btn bg-gradient-danger my-4 mb-2">Mới</button>									
 								</div>
 							</form>
 						</div>
@@ -640,7 +648,7 @@
 	<!-- Github buttons -->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-	<script src="/assets/js/material-dashboard.min.js?v=3.0.2"></script>
+	<script src="/assets/js/material-dashboard.js?v=3.0.2"></script>
 </body>
 
 </html>

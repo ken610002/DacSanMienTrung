@@ -119,7 +119,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 														th:text="${product.tenSP}"></a></h6>
 											</div>
 											<div class="mid-2">
-												<p><em class="item_price" th:text="${product.donGia+'đ'}"></em></p>
+												<p><em class="item_price" th:text="${#numbers.formatDecimal(product.donGia, 0, 'COMMA', 0, 'POINT')}"></em> VNĐ</p>
 												<div class="block">
 													<div class="starbox small ghosting"> </div>
 												</div>
@@ -180,7 +180,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 												<h6 class="item_price" th:text="'Đã bán: '+${product.soLuong}"></h6>
 											</div>
 											<div class="mid-2">
-												<p><em class="item_price" th:text="${product.group.donGia}"></em></p>
+												<p><em class="item_price" th:text="${#numbers.formatDecimal(product.group.donGia, 0, 'COMMA', 0, 'POINT')}"></em> VNĐ</p>
 												<div class="block">
 													<div class="starbox small ghosting"> </div>
 												</div>
