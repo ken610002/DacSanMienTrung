@@ -101,10 +101,12 @@
             user_products.push(item);
           }
         })
+
         return user_products;
       } catch (e) {
         return [];
       }
+      
     }
     var updateProductKey = function(id,quantity){
       var productIndex =getIndexOfProduct(id);
@@ -638,8 +640,10 @@
 		// quantity check out page
       $('.check-out-btn').on('click', async function(){
            var check = await check_quantity();
+           
            if(check === false)  return;         
            var products = ProductManager.getAllProducts();
+           
            await $.ajax({
                     url: `${host}/cart/check-out`,
                     type: 'POST',

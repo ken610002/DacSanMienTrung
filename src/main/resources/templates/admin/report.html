@@ -243,30 +243,32 @@
 														</tr>
 													</thead>
 													<tbody>
+														<th:block th:each="tk : ${tkNam}">
 														<tr>
 															<td>
-																<p class="text-xs text-center font-weight-bold">1</p>
-															</td>
-															<td>
 																<div class="justify-content-center">
-																	<h6 class="text-center text-xs">1111</h6>
-																</div>
-															</td>
-															<td>
-																<p class="text-xs font-weight-bold text-center">1111</p>
-															</td>
-															<td>
-																<div class="justify-content-center">
-																	<h6 class="text-center text-xs">1111</h6>
+																	<h6 class="text-center text-xs" th:text="${tk.nam}">1111</h6>
 																</div>
 															</td>
 															<td class="align-middle text-center text-sm">
-																<h6 class="text-xs font-weight-bold ">200</h6>
+																<h6 class="text-xs font-weight-bold " th:text="${tk.tongSP}">200</h6>
 															</td>
 															<td class="align-middle text-center text-sm">
-																<h6 class="text-xs font-weight-bold ">500</h6>
+																<h6 class="text-xs font-weight-bold " th:text="${#numbers.formatCurrency(tk.giaThap)}">500</h6>
+															</td>
+															<td>
+																<div class="justify-content-center">
+																	<h6 class="text-center text-xs" th:text="${#numbers.formatCurrency(tk.giaCao)}">1111</h6>
+																</div>
+															</td>
+															<td class="align-middle text-center text-sm">
+																<h6 class="text-xs font-weight-bold " th:text="${#numbers.formatCurrency(tk.giaTrungBinh)}">200</h6>
+															</td>
+															<td class="align-middle text-center text-sm">
+																<h6 class="text-xs font-weight-bold " th:text="${#numbers.formatCurrency(tk.doanhThu)}">500</h6>
 															</td>
 														</tr>
+														</th:block>	
 													</tbody>
 												</table>
 											</div>
