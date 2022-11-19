@@ -12,7 +12,7 @@ import com.msstore.DAO.SanPhamDAO;
 public class AdminController {
 	@Autowired
 	SanPhamDAO spDAO;
-	
+
 	@RequestMapping()
 	public String index() {
 		return "admin/index";
@@ -22,22 +22,15 @@ public class AdminController {
 	public String login() {
 		return "admin/login";
 	}
-//	@RequestMapping("/account")
-//	public String account() {
-//		
-//		return "admin/account";
-//	}
-	
+
 	@RequestMapping("/report")
 	public String report(Model model) {
 		model.addAttribute("tkNam", spDAO.findBuThongKeNam());
 		return "admin/report";
 	}
-	
+
 	@RequestMapping("/logout")
 	public String logout() {
 		return "admin/login";
 	}
-	
-	
 }

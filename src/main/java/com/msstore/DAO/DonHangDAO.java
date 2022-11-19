@@ -11,4 +11,10 @@ import com.msstore.Entity.DonHang;
 public interface DonHangDAO extends JpaRepository<DonHang, Long>{
 	@Query("SELECT o from DonHang o where o.tk.taiKhoan = ?1")
 	public List<DonHang> getAllOrder(String username,Sort sort);
+	
+	@Query(value = "SELECT MONTH(d.ngayTao) as month, COUNT(d.maDon) as totalCode, COUNT(c.id.maSP) as totalProduct, "
+			+ "MIN(c.donGia) as minPrice, MAX(c.donGia) as maxPrice, AVG(c.donGia) as mediumPrice, SUM(c.donGia) as totalPrice "
+			+ "FROM DonHang d JOIN ChiTietDonHang c ON d.maDon = c.id.maDon "
+			+ "GROUP BY d.ngayTao, d.maDon")
+	List<Object[]> getRevenusMonth();
 }
