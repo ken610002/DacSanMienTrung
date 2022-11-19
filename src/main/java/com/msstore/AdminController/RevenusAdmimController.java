@@ -16,18 +16,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.msstore.DAO.DonHangDAO;
-import com.msstore.DAO.TaiKhoanDAO;
+import com.msstore.DAO.SanPhamDAO;
 import com.msstore.DTO.ThongKeDTO;
 import com.msstore.util.Excel;
 
 @Controller
 @RequestMapping("/admin")
-public class RevenusMothAdminController {
+public class RevenusAdmimController {
 	@Autowired
 	DonHangDAO dhDAO;
 	
-	@Autowired 
-	TaiKhoanDAO tkDAO;
+	@Autowired
+	SanPhamDAO spDAO;
 	
 	@GetMapping("/report")
 	public String report(Model model) {
@@ -42,6 +42,7 @@ public class RevenusMothAdminController {
 			list.add(dto);
 		}
 		model.addAttribute("revenusMonth", list);
+		model.addAttribute("tkNam", spDAO.findBuThongKeNam());
 		return "admin/report";
 	} 
 	
