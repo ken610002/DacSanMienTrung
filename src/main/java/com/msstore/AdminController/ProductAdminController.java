@@ -145,7 +145,7 @@ public class ProductAdminController {
 		Set<Long> nameSet = new HashSet<>();
 		img = img.stream().filter(e -> nameSet.add(e.getSp().getMaSP())).collect(Collectors.toList());
 		
-		if(productId.equals(0)) {
+		if(product.getMaSP() == 0) {
 			model.addAttribute("images", img);
 			model.addAttribute("categoris", categoris);
 			model.addAttribute("products", listProduct);

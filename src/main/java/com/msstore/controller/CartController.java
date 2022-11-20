@@ -59,7 +59,7 @@ public class CartController {
 		double total = 0;
 		TaiKhoan tk = new TaiKhoan();
 		SanPham sp = new SanPham();
-		
+
 		//Lấy username
 		Map<String, Object> map_first = (Map<String, Object>) obj.get(0);
 		Set<String> set_first = map_first.keySet();
@@ -69,7 +69,7 @@ public class CartController {
 			}
         }
 		
-		List<ChiTietDonHang> ctlist = new ArrayList<>();
+		List<ChiTietDonHang> ctlist = new ArrayList<>(); 
 		
 		for(Object ob : obj) {
 			Map<String, Object> map = (Map<String, Object>) ob;

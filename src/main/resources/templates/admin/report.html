@@ -1,71 +1,64 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-<link rel="icon" type="image/png" href="../assets/img/favicon.png">
 
-<title>Thống Kê</title>
-<!--     Fonts and icons     -->
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
-<!-- Nucleo Icons -->
-<link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
-<link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
-<!-- Font Awesome Icons -->
-<script src="https://kit.fontawesome.com/85b9f1f1eb.js" crossorigin="anonymous"></script>
-<!-- Material Icons -->
-<link
-	href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-<!-- CSS Files -->
-<link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+
+	<title>Thống Kê</title>
+	<!--     Fonts and icons     -->
+	<link rel="stylesheet" type="text/css"
+		href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+	<!-- Nucleo Icons -->
+	<link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
+	<link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
+	<!-- Font Awesome Icons -->
+	<script src="https://kit.fontawesome.com/85b9f1f1eb.js" crossorigin="anonymous"></script>
+	<!-- Material Icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+	<!-- CSS Files -->
+	<link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
 
 	<div th:replace="/admin/header"></div>
-	
-	<main
-		class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+	<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 		<!-- Navbar -->
-		<nav
-			class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
-			id="navbarBlur" navbar-scroll="true">
+		<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
+			navbar-scroll="true">
 			<div class="container-fluid py-1 px-3">
 				<nav aria-label="breadcrumb">
-					<ol
-						class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-						<li class="breadcrumb-item text-sm"><a
-							class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-						<li class="breadcrumb-item text-sm text-dark active"
-							aria-current="page">Thống Kê</li>
+					<ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+						<li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a>
+						</li>
+						<li class="breadcrumb-item text-sm text-dark active" aria-current="page">Thống Kê</li>
 					</ol>
 					<h6 class="font-weight-bolder mb-0">Thống Kê</h6>
 				</nav>
 				<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
 					<div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
 					<ul class="navbar-nav  justify-content-end">
-						<li class="nav-item d-flex align-items-center"><a
-							href="javascript:;"
-							class="nav-link text-body font-weight-bold px-0"> <i
-								class="fa fa-user me-sm-1"></i> <span class="d-sm-inline d-none">Đăng
+						<li class="nav-item d-flex align-items-center"><a href="javascript:;"
+								class="nav-link text-body font-weight-bold px-0"> <i class="fa fa-user me-sm-1"></i>
+								<span class="d-sm-inline d-none">Đăng
 									Nhập</span>
-						</a></li>
+							</a></li>
 						<li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-							<a href="javascript:;" class="nav-link text-body p-0"
-							id="iconNavbarSidenav">
+							<a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
 								<div class="sidenav-toggler-inner">
-									<i class="sidenav-toggler-line"></i> <i
-										class="sidenav-toggler-line"></i> <i
+									<i class="sidenav-toggler-line"></i> <i class="sidenav-toggler-line"></i> <i
 										class="sidenav-toggler-line"></i>
 								</div>
-						</a>
+							</a>
 						</li>
-						<li class="nav-item px-3 d-flex align-items-center"><a
-							href="javascript:;" class="nav-link text-body p-0"> <i
-								class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-						</a></li>
+						<li class="nav-item px-3 d-flex align-items-center"><a href="javascript:;"
+								class="nav-link text-body p-0"> <i
+									class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+							</a></li>
 					</ul>
 				</div>
 			</div>
@@ -76,28 +69,28 @@
 			<div class="row">
 				<nav>
 					<div class="nav nav-tabs" id="nav-tab" role="tablist">
-						<button class="nav-link active" id="nav-ngay-tab" data-bs-toggle="tab" data-bs-target="#nav-ngay" type="button" 
-						role="tab"  aria-selected="true">Thống Kê Trong Ngày</button>
-						<button class="nav-link" id="nav-thang-tab" data-bs-toggle="tab" data-bs-target="#nav-thang" type="button" role="tab"
-						 aria-selected="false">Thống Kê Doanh Thu Tháng</button>
-						<button class="nav-link" id="nav-nam-tab" data-bs-toggle="tab" data-bs-target="#nav-nam" type="button" role="tab"
-						 aria-selected="false">Thống Kê Doanh Thu Năm</button>
-						<button class="nav-link" id="nav-top5-tab" data-bs-toggle="tab" data-bs-target="#nav-top5" type="button" role="tab"
-						 aria-selected="false">Top 5 Sản Phẩm</button>
+						<button class="nav-link active" id="nav-ngay-tab" data-bs-toggle="tab"
+							data-bs-target="#nav-ngay" type="button" role="tab" aria-selected="true">Thống Kê Trong
+							Ngày</button>
+						<button class="nav-link" id="nav-thang-tab" data-bs-toggle="tab" data-bs-target="#nav-thang"
+							type="button" role="tab" aria-selected="false">Thống Kê Doanh Thu Tháng</button>
+						<button class="nav-link" id="nav-nam-tab" data-bs-toggle="tab" data-bs-target="#nav-nam"
+							type="button" role="tab" aria-selected="false">Thống Kê Doanh Thu Năm</button>
+						<button class="nav-link" id="nav-top5-tab" data-bs-toggle="tab" data-bs-target="#nav-top5"
+							type="button" role="tab" aria-selected="false">Top 5 Sản Phẩm</button>
 					</div>
 				</nav>
 
 				<div class="tab-content" id="nav-tabContent">
-					<div class="tab-pane fade show active" id="nav-ngay" role="tabpanel" >
+					<div class="tab-pane fade show active" id="nav-ngay" role="tabpanel">
 						<div class="container-fluid py-4">
 							<div class="row">
 								<div class="col-12">
 									<div class="card my-4">
-										<div
-											class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-											<div
-												class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-												<h6 class="text-white text-capitalize ps-3">Thống Kê Doanh Thu Trong Ngày</h6>
+										<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+											<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+												<h6 class="text-white text-capitalize ps-3">Thống Kê Doanh Thu Trong
+													Ngày</h6>
 											</div>
 										</div>
 										<div class="card-body px-0 pb-2">
@@ -106,17 +99,21 @@
 													<thead>
 														<tr>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tổng Đơn Hủy</th>
+																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																Tổng Đơn Hủy</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tổng Sản Phẩm</th>
+																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																Tổng Sản Phẩm</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tổng Doanh Thu</th>
+																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																Tổng Doanh Thu</th>
 														</tr>
 													</thead>
 													<tbody>
 														<tr>
 															<td>
-															<h6 class="text-xs font-weight-bold text-center">masp</h6>
+																<h6 class="text-xs font-weight-bold text-center">masp
+																</h6>
 															</td>
 															<td>
 																<div class="justify-content-center">
@@ -124,7 +121,8 @@
 																</div>
 															</td>
 															<td class="align-middle text-center text-sm">
-																<h6 class="text-xs font-weight-bold text-center">so luong</h6>
+																<h6 class="text-xs font-weight-bold text-center">so
+																	luong</h6>
 															</td>
 														</tr>
 													</tbody>
@@ -136,16 +134,15 @@
 							</div>
 						</div>
 					</div>
-					<div class="tab-pane fade" id="nav-thang" role="tabpanel"  >
+					<div class="tab-pane fade" id="nav-thang" role="tabpanel">
 						<div class="container-fluid py-4">
 							<div class="row">
 								<div class="col-12">
 									<div class="card my-4">
-										<div
-											class="card-header p-0  mt-n4 mx-3 z-index-2">
-											<div
-												class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-												<h6 class="text-white text-capitalize ps-3">Thống Kê Doanh Thu Theo Tháng</h6>
+										<div class="card-header p-0  mt-n4 mx-3 z-index-2">
+											<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+												<h6 class="text-white text-capitalize ps-3">Thống Kê Doanh Thu Theo
+													Tháng</h6>
 											</div>
 										</div>
 										<div class="card-body px-0 pb-2 ">
@@ -154,55 +151,77 @@
 													<thead>
 														<tr>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tháng</th>
+																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																Tháng</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">Tổng Đơn Hủy</th>
+																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
+																Tổng Đơn</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tổng Sản Phẩm</th>
+																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																Tổng Sản Phẩm</th>
 															<th
-																class=" text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Giá Thấp Nhất</th>
+																class=" text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																Giá Thấp Nhất</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">Giá Cao Nhất</th>
+																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
+																Giá Cao Nhất</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Giá Trung Bình</th>
+																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																Giá Trung Bình</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tổng</th>
+																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																Tổng</th>
 														</tr>
 													</thead>
 													<tbody>
-														<tr>
-															<td>
-																<p class="text-xs text-center font-weight-bold">1</p>
-															</td>
-															<td>
-																<div class="justify-content-center">
-																	<h6 class="text-center text-xs">1111</h6>
-																</div>
-															</td>
-															<td class="align-middle text-center text-sm">
-																<h6 class="text-xs font-weight-bold ">1111</h6>
-															</td>
-															<td>
-																<p class="text-xs font-weight-bold text-center">1111</p>
-															</td>
-															<td>
-																<div class="justify-content-center">
-																	<h6 class="text-center text-xs">1111</h6>
-																</div>
-															</td>
-															<td class="align-middle text-center text-sm">
-																<h6 class="text-xs font-weight-bold ">200</h6>
-															</td>
-															<td class="align-middle text-center text-sm">
-																<h6 class="text-xs font-weight-bold ">500</h6>
-															</td>
-														</tr>
+														<th:block th:each="revenus : ${revenusMonth}">
+															<tr>
+																<td>
+																	<p class="text-xs text-center font-weight-bold"
+																		th:text="${revenus.month}">
+																	</p>
+																</td>
+																<td>
+																	<div class=" justify-content-center">
+																		<h6 class="text-center text-xs"
+																			th:text="${revenus.totalCode}"></h6>
+																	</div>
+																</td>
+																<td class="align-middle text-center text-sm">
+																	<h6 class="text-xs font-weight-bold "
+																		th:text="${revenus.totalProduct}"></h6>
+																</td>
+																<td>
+																	<p class="text-xs font-weight-bold text-center"
+																		th:text="${#numbers.formatDecimal(revenus.minPrice, 0, 'COMMA', 2, 'POINT')}">
+																	</p>
+																</td>
+																<td>
+																	<div class="justify-content-center">
+																		<h6 class="text-center text-xs"
+																			th:text="${#numbers.formatDecimal(revenus.maxPrice, 0, 'COMMA', 2, 'POINT')}">
+																		</h6>
+																	</div>
+																</td>
+																<td class="align-middle text-center text-sm">
+																	<h6 class="text-xs font-weight-bold "
+																		th:text="${#numbers.formatDecimal(revenus.mediumPrice, 0, 'COMMA', 2, 'POINT')}">
+																	</h6>
+																</td>
+																<td class="align-middle text-center text-sm">
+																	<h6 class="text-xs font-weight-bold "
+																		th:text="${#numbers.formatDecimal(revenus.totalPrice, 0, 'COMMA', 2, 'POINT')}">
+																	</h6>
+																</td>
+															</tr>
+														</th:block>
 													</tbody>
 												</table>
 											</div>
-											<form action="/admin/sanpham" modelAttribute="sp"  class="text-start" >
+											<form class="text-start">
 												<div class="text-end mx-3">
-													<button formaction="/admin/sanpham/them" class="btn bg-gradient-primary mb-2 ">Xuất Excel</button>
+													<a th:href="@{/admin/report/export/excel}"
+														class="btn bg-gradient-primary mb-2 ">Export to Excel</a>
 												</div>
 											</form>
 										</div>
@@ -211,16 +230,15 @@
 							</div>
 						</div>
 					</div>
-					<div class="tab-pane fade" id="nav-nam" role="tabpanel"  >
+					<div class="tab-pane fade" id="nav-nam" role="tabpanel">
 						<div class="container-fluid py-4">
 							<div class="row">
 								<div class="col-12">
 									<div class="card my-4">
-										<div
-											class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-											<div
-												class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-												<h6 class="text-white text-capitalize ps-3">Thống Kê Doanh Thu Theo Năm</h6>
+										<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+											<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+												<h6 class="text-white text-capitalize ps-3">Thống Kê Doanh Thu Theo Năm
+												</h6>
 											</div>
 										</div>
 										<div class="card-body px-0 pb-2 ">
@@ -229,50 +247,59 @@
 													<thead>
 														<tr>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Năm</th>
+																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																Năm</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tổng Sản Phẩm</th>
+																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																Tổng Sản Phẩm</th>
 															<th
-																class=" text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Giá Thấp Nhất</th>
+																class=" text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																Giá Thấp Nhất</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">Giá Cao Nhất</th>
+																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
+																Giá Cao Nhất</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Giá Trung Bình</th>
+																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																Giá Trung Bình</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tổng Doanh Thu</th>
+																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																Tổng Doanh Thu</th>
 														</tr>
 													</thead>
 													<tbody>
+														<th:block th:each="tk : ${tkNam}">
 														<tr>
 															<td>
-																<p class="text-xs text-center font-weight-bold">1</p>
-															</td>
-															<td>
 																<div class="justify-content-center">
-																	<h6 class="text-center text-xs">1111</h6>
-																</div>
-															</td>
-															<td>
-																<p class="text-xs font-weight-bold text-center">1111</p>
-															</td>
-															<td>
-																<div class="justify-content-center">
-																	<h6 class="text-center text-xs">1111</h6>
+																	<h6 class="text-center text-xs" th:text="${tk.nam}">1111</h6>
 																</div>
 															</td>
 															<td class="align-middle text-center text-sm">
-																<h6 class="text-xs font-weight-bold ">200</h6>
+																<h6 class="text-xs font-weight-bold " th:text="${tk.tongSP}">200</h6>
 															</td>
 															<td class="align-middle text-center text-sm">
-																<h6 class="text-xs font-weight-bold ">500</h6>
+																<h6 class="text-xs font-weight-bold " th:text="${#numbers.formatCurrency(tk.giaThap)}">500</h6>
+															</td>
+															<td>
+																<div class="justify-content-center">
+																	<h6 class="text-center text-xs" th:text="${#numbers.formatCurrency(tk.giaCao)}">1111</h6>
+																</div>
+															</td>
+															<td class="align-middle text-center text-sm">
+																<h6 class="text-xs font-weight-bold " th:text="${#numbers.formatCurrency(tk.giaTrungBinh)}">200</h6>
+															</td>
+															<td class="align-middle text-center text-sm">
+																<h6 class="text-xs font-weight-bold " th:text="${#numbers.formatCurrency(tk.doanhThu)}">500</h6>
 															</td>
 														</tr>
+														</th:block>	
 													</tbody>
 												</table>
 											</div>
-											<form action="/admin/sanpham" modelAttribute="sp"  class="text-start" >
+											<form action="/admin/sanpham" modelAttribute="sp" class="text-start">
 												<div class="text-end mx-3">
-													<button formaction="/admin/sanpham/them" class="btn bg-gradient-primary mb-2 ">Xuất Excel</button>
+													<button formaction="/admin/sanpham/them"
+														class="btn bg-gradient-primary mb-2 ">Xuất Excel</button>
 												</div>
 											</form>
 										</div>
@@ -281,16 +308,15 @@
 							</div>
 						</div>
 					</div>
-					<div class="tab-pane fade" id="nav-top5" role="tabpanel" >
+					<div class="tab-pane fade" id="nav-top5" role="tabpanel">
 						<div class="container-fluid py-4">
 							<div class="row">
 								<div class="col-12">
 									<div class="card my-4">
-										<div
-											class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-											<div
-												class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-												<h6 class="text-white text-capitalize ps-3">Top 5 Sản Phẩm Bán Chạy Nhất</h6>
+										<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+											<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+												<h6 class="text-white text-capitalize ps-3">Top 5 Sản Phẩm Bán Chạy Nhất
+												</h6>
 											</div>
 										</div>
 										<div class="card-body px-0 pb-2 ">
@@ -299,15 +325,18 @@
 													<thead>
 														<tr>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tên Sản Phẩm</th>
+																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																Tên Sản Phẩm</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">Tổng Số Lượng Bán</th>
+																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
+																Tổng Số Lượng Bán</th>
 														</tr>
 													</thead>
 													<tbody>
 														<tr>
 															<td>
-																<p class="text-xs text-center font-weight-bold">Iphone</p>
+																<p class="text-xs text-center font-weight-bold">Iphone
+																</p>
 															</td>
 															<td>
 																<div class="justify-content-center">
@@ -333,15 +362,13 @@
 			<div class="container-fluid">
 				<div class="row align-items-center justify-content-lg-between">
 					<div class="col-lg-6 mb-lg-0 mb-4">
-						<div
-							class="copyright text-center text-sm text-muted text-lg-start">
+						<div class="copyright text-center text-sm text-muted text-lg-start">
 							@
 							<script>
 								document.write(new Date().getFullYear())
 							</script>
-							, made with <i class="fa fa-heart"></i> by <a
-								href="https://www.creative-tim.com" class="font-weight-bold"
-								target="_blank">Ken</a>
+							, made with <i class="fa fa-heart"></i> by <a href="https://www.creative-tim.com"
+								class="font-weight-bold" target="_blank">Ken</a>
 						</div>
 					</div>
 				</div>
@@ -360,8 +387,7 @@
 					<p>See our dashboard options.</p>
 				</div>
 				<div class="float-end mt-4">
-					<button
-						class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+					<button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
 						<i class="material-icons">clear</i>
 					</button>
 				</div>
@@ -375,16 +401,13 @@
 				</div>
 				<a href="javascript:void(0)" class="switch-trigger background-color">
 					<div class="badge-colors my-2 text-start">
-						<span class="badge filter bg-gradient-primary active"
-							data-color="primary" onclick="sidebarColor(this)"></span> <span
-							class="badge filter bg-gradient-dark" data-color="dark"
-							onclick="sidebarColor(this)"></span> <span
-							class="badge filter bg-gradient-info" data-color="info"
-							onclick="sidebarColor(this)"></span> <span
-							class="badge filter bg-gradient-success" data-color="success"
-							onclick="sidebarColor(this)"></span> <span
-							class="badge filter bg-gradient-warning" data-color="warning"
-							onclick="sidebarColor(this)"></span> <span
+						<span class="badge filter bg-gradient-primary active" data-color="primary"
+							onclick="sidebarColor(this)"></span> <span class="badge filter bg-gradient-dark"
+							data-color="dark" onclick="sidebarColor(this)"></span> <span
+							class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
+						<span class="badge filter bg-gradient-success" data-color="success"
+							onclick="sidebarColor(this)"></span> <span class="badge filter bg-gradient-warning"
+							data-color="warning" onclick="sidebarColor(this)"></span> <span
 							class="badge filter bg-gradient-danger" data-color="danger"
 							onclick="sidebarColor(this)"></span>
 					</div>
@@ -395,12 +418,12 @@
 					<p class="text-sm">Choose between 2 different sidenav types.</p>
 				</div>
 				<div class="d-flex">
-					<button class="btn bg-gradient-dark px-3 mb-2 active"
-						data-class="bg-gradient-dark" onclick="sidebarType(this)">Dark</button>
-					<button class="btn bg-gradient-dark px-3 mb-2 ms-2"
-						data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
-					<button class="btn bg-gradient-dark px-3 mb-2 ms-2"
-						data-class="bg-white" onclick="sidebarType(this)">White</button>
+					<button class="btn bg-gradient-dark px-3 mb-2 active" data-class="bg-gradient-dark"
+						onclick="sidebarType(this)">Dark</button>
+					<button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent"
+						onclick="sidebarType(this)">Transparent</button>
+					<button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white"
+						onclick="sidebarType(this)">White</button>
 				</div>
 				<p class="text-sm d-xl-none d-block mt-2">You can change the
 					sidenav type just on desktop view.</p>
@@ -408,34 +431,32 @@
 				<div class="mt-3 d-flex">
 					<h6 class="mb-0">Navbar Fixed</h6>
 					<div class="form-check form-switch ps-0 ms-auto my-auto">
-						<input class="form-check-input mt-1 ms-auto" type="checkbox"
-							id="navbarFixed" onclick="navbarFixed(this)">
+						<input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed"
+							onclick="navbarFixed(this)">
 					</div>
 				</div>
 				<hr class="horizontal dark my-3">
 				<div class="mt-2 d-flex">
 					<h6 class="mb-0">Light / Dark</h6>
 					<div class="form-check form-switch ps-0 ms-auto my-auto">
-						<input class="form-check-input mt-1 ms-auto" type="checkbox"
-							id="dark-version" onclick="darkMode(this)">
+						<input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version"
+							onclick="darkMode(this)">
 					</div>
 				</div>
 				<hr class="horizontal dark my-sm-4">
 				<a class="btn btn-outline-dark w-100" href="">View documentation</a>
 				<div class="w-100 text-center">
-					<a class="github-button"
-						href="https://github.com/creativetimofficial/material-dashboard"
+					<a class="github-button" href="https://github.com/creativetimofficial/material-dashboard"
 						data-icon="octicon-star" data-size="large" data-show-count="true"
 						aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
 					<h6 class="mt-3">Thank you for sharing!</h6>
-					<a
-						href="https://twitter.com/intent/tweet?text=Check%20Material%20UI%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard"
-						class="btn btn-dark mb-0 me-2" target="_blank"> <i
-						class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
+					<a href="https://twitter.com/intent/tweet?text=Check%20Material%20UI%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard"
+						class="btn btn-dark mb-0 me-2" target="_blank"> <i class="fab fa-twitter me-1"
+							aria-hidden="true"></i> Tweet
 					</a> <a
 						href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/material-dashboard"
-						class="btn btn-dark mb-0 me-2" target="_blank"> <i
-						class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
+						class="btn btn-dark mb-0 me-2" target="_blank"> <i class="fab fa-facebook-square me-1"
+							aria-hidden="true"></i> Share
 					</a>
 				</div>
 			</div>
@@ -451,76 +472,76 @@
 		var ctx = document.getElementById("chart-bars").getContext("2d");
 
 		new Chart(ctx, {
-			type : "bar",
-			data : {
-				labels : [ "M", "T", "W", "T", "F", "S", "S" ],
-				datasets : [ {
-					label : "Sales",
-					tension : 0.4,
-					borderWidth : 0,
-					borderRadius : 4,
-					borderSkipped : false,
-					backgroundColor : "rgba(255, 255, 255, .8)",
-					data : [ 50, 20, 10, 22, 50, 10, 40 ],
-					maxBarThickness : 6
-				}, ],
+			type: "bar",
+			data: {
+				labels: ["M", "T", "W", "T", "F", "S", "S"],
+				datasets: [{
+					label: "Sales",
+					tension: 0.4,
+					borderWidth: 0,
+					borderRadius: 4,
+					borderSkipped: false,
+					backgroundColor: "rgba(255, 255, 255, .8)",
+					data: [50, 20, 10, 22, 50, 10, 40],
+					maxBarThickness: 6
+				},],
 			},
-			options : {
-				responsive : true,
-				maintainAspectRatio : false,
-				plugins : {
-					legend : {
-						display : false,
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				plugins: {
+					legend: {
+						display: false,
 					}
 				},
-				interaction : {
-					intersect : false,
-					mode : 'index',
+				interaction: {
+					intersect: false,
+					mode: 'index',
 				},
-				scales : {
-					y : {
-						grid : {
-							drawBorder : false,
-							display : true,
-							drawOnChartArea : true,
-							drawTicks : false,
-							borderDash : [ 5, 5 ],
-							color : 'rgba(255, 255, 255, .2)'
+				scales: {
+					y: {
+						grid: {
+							drawBorder: false,
+							display: true,
+							drawOnChartArea: true,
+							drawTicks: false,
+							borderDash: [5, 5],
+							color: 'rgba(255, 255, 255, .2)'
 						},
-						ticks : {
-							suggestedMin : 0,
-							suggestedMax : 500,
-							beginAtZero : true,
-							padding : 10,
-							font : {
-								size : 14,
-								weight : 300,
-								family : "Roboto",
-								style : 'normal',
-								lineHeight : 2
+						ticks: {
+							suggestedMin: 0,
+							suggestedMax: 500,
+							beginAtZero: true,
+							padding: 10,
+							font: {
+								size: 14,
+								weight: 300,
+								family: "Roboto",
+								style: 'normal',
+								lineHeight: 2
 							},
-							color : "#fff"
+							color: "#fff"
 						},
 					},
-					x : {
-						grid : {
-							drawBorder : false,
-							display : true,
-							drawOnChartArea : true,
-							drawTicks : false,
-							borderDash : [ 5, 5 ],
-							color : 'rgba(255, 255, 255, .2)'
+					x: {
+						grid: {
+							drawBorder: false,
+							display: true,
+							drawOnChartArea: true,
+							drawTicks: false,
+							borderDash: [5, 5],
+							color: 'rgba(255, 255, 255, .2)'
 						},
-						ticks : {
-							display : true,
-							color : '#f8f9fa',
-							padding : 10,
-							font : {
-								size : 14,
-								weight : 300,
-								family : "Roboto",
-								style : 'normal',
-								lineHeight : 2
+						ticks: {
+							display: true,
+							color: '#f8f9fa',
+							padding: 10,
+							font: {
+								size: 14,
+								weight: 300,
+								family: "Roboto",
+								style: 'normal',
+								lineHeight: 2
 							},
 						}
 					},
@@ -531,80 +552,80 @@
 		var ctx2 = document.getElementById("chart-line").getContext("2d");
 
 		new Chart(ctx2, {
-			type : "line",
-			data : {
-				labels : [ "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
-						"Nov", "Dec" ],
-				datasets : [ {
-					label : "Mobile apps",
-					tension : 0,
-					borderWidth : 0,
-					pointRadius : 5,
-					pointBackgroundColor : "rgba(255, 255, 255, .8)",
-					pointBorderColor : "transparent",
-					borderColor : "rgba(255, 255, 255, .8)",
-					borderColor : "rgba(255, 255, 255, .8)",
-					borderWidth : 4,
-					backgroundColor : "transparent",
-					fill : true,
-					data : [ 50, 40, 300, 320, 500, 350, 200, 230, 500 ],
-					maxBarThickness : 6
+			type: "line",
+			data: {
+				labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
+					"Nov", "Dec"],
+				datasets: [{
+					label: "Mobile apps",
+					tension: 0,
+					borderWidth: 0,
+					pointRadius: 5,
+					pointBackgroundColor: "rgba(255, 255, 255, .8)",
+					pointBorderColor: "transparent",
+					borderColor: "rgba(255, 255, 255, .8)",
+					borderColor: "rgba(255, 255, 255, .8)",
+					borderWidth: 4,
+					backgroundColor: "transparent",
+					fill: true,
+					data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
+					maxBarThickness: 6
 
-				} ],
+				}],
 			},
-			options : {
-				responsive : true,
-				maintainAspectRatio : false,
-				plugins : {
-					legend : {
-						display : false,
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				plugins: {
+					legend: {
+						display: false,
 					}
 				},
-				interaction : {
-					intersect : false,
-					mode : 'index',
+				interaction: {
+					intersect: false,
+					mode: 'index',
 				},
-				scales : {
-					y : {
-						grid : {
-							drawBorder : false,
-							display : true,
-							drawOnChartArea : true,
-							drawTicks : false,
-							borderDash : [ 5, 5 ],
-							color : 'rgba(255, 255, 255, .2)'
+				scales: {
+					y: {
+						grid: {
+							drawBorder: false,
+							display: true,
+							drawOnChartArea: true,
+							drawTicks: false,
+							borderDash: [5, 5],
+							color: 'rgba(255, 255, 255, .2)'
 						},
-						ticks : {
-							display : true,
-							color : '#f8f9fa',
-							padding : 10,
-							font : {
-								size : 14,
-								weight : 300,
-								family : "Roboto",
-								style : 'normal',
-								lineHeight : 2
+						ticks: {
+							display: true,
+							color: '#f8f9fa',
+							padding: 10,
+							font: {
+								size: 14,
+								weight: 300,
+								family: "Roboto",
+								style: 'normal',
+								lineHeight: 2
 							},
 						}
 					},
-					x : {
-						grid : {
-							drawBorder : false,
-							display : false,
-							drawOnChartArea : false,
-							drawTicks : false,
-							borderDash : [ 5, 5 ]
+					x: {
+						grid: {
+							drawBorder: false,
+							display: false,
+							drawOnChartArea: false,
+							drawTicks: false,
+							borderDash: [5, 5]
 						},
-						ticks : {
-							display : true,
-							color : '#f8f9fa',
-							padding : 10,
-							font : {
-								size : 14,
-								weight : 300,
-								family : "Roboto",
-								style : 'normal',
-								lineHeight : 2
+						ticks: {
+							display: true,
+							color: '#f8f9fa',
+							padding: 10,
+							font: {
+								size: 14,
+								weight: 300,
+								family: "Roboto",
+								style: 'normal',
+								lineHeight: 2
 							},
 						}
 					},
@@ -615,79 +636,79 @@
 		var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
 
 		new Chart(ctx3, {
-			type : "line",
-			data : {
-				labels : [ "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
-						"Nov", "Dec" ],
-				datasets : [ {
-					label : "Mobile apps",
-					tension : 0,
-					borderWidth : 0,
-					pointRadius : 5,
-					pointBackgroundColor : "rgba(255, 255, 255, .8)",
-					pointBorderColor : "transparent",
-					borderColor : "rgba(255, 255, 255, .8)",
-					borderWidth : 4,
-					backgroundColor : "transparent",
-					fill : true,
-					data : [ 50, 40, 300, 220, 500, 250, 400, 230, 500 ],
-					maxBarThickness : 6
+			type: "line",
+			data: {
+				labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
+					"Nov", "Dec"],
+				datasets: [{
+					label: "Mobile apps",
+					tension: 0,
+					borderWidth: 0,
+					pointRadius: 5,
+					pointBackgroundColor: "rgba(255, 255, 255, .8)",
+					pointBorderColor: "transparent",
+					borderColor: "rgba(255, 255, 255, .8)",
+					borderWidth: 4,
+					backgroundColor: "transparent",
+					fill: true,
+					data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+					maxBarThickness: 6
 
-				} ],
+				}],
 			},
-			options : {
-				responsive : true,
-				maintainAspectRatio : false,
-				plugins : {
-					legend : {
-						display : false,
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				plugins: {
+					legend: {
+						display: false,
 					}
 				},
-				interaction : {
-					intersect : false,
-					mode : 'index',
+				interaction: {
+					intersect: false,
+					mode: 'index',
 				},
-				scales : {
-					y : {
-						grid : {
-							drawBorder : false,
-							display : true,
-							drawOnChartArea : true,
-							drawTicks : false,
-							borderDash : [ 5, 5 ],
-							color : 'rgba(255, 255, 255, .2)'
+				scales: {
+					y: {
+						grid: {
+							drawBorder: false,
+							display: true,
+							drawOnChartArea: true,
+							drawTicks: false,
+							borderDash: [5, 5],
+							color: 'rgba(255, 255, 255, .2)'
 						},
-						ticks : {
-							display : true,
-							padding : 10,
-							color : '#f8f9fa',
-							font : {
-								size : 14,
-								weight : 300,
-								family : "Roboto",
-								style : 'normal',
-								lineHeight : 2
+						ticks: {
+							display: true,
+							padding: 10,
+							color: '#f8f9fa',
+							font: {
+								size: 14,
+								weight: 300,
+								family: "Roboto",
+								style: 'normal',
+								lineHeight: 2
 							},
 						}
 					},
-					x : {
-						grid : {
-							drawBorder : false,
-							display : false,
-							drawOnChartArea : false,
-							drawTicks : false,
-							borderDash : [ 5, 5 ]
+					x: {
+						grid: {
+							drawBorder: false,
+							display: false,
+							drawOnChartArea: false,
+							drawTicks: false,
+							borderDash: [5, 5]
 						},
-						ticks : {
-							display : true,
-							color : '#f8f9fa',
-							padding : 10,
-							font : {
-								size : 14,
-								weight : 300,
-								family : "Roboto",
-								style : 'normal',
-								lineHeight : 2
+						ticks: {
+							display: true,
+							color: '#f8f9fa',
+							padding: 10,
+							font: {
+								size: 14,
+								weight: 300,
+								family: "Roboto",
+								style: 'normal',
+								lineHeight: 2
 							},
 						}
 					},
@@ -699,10 +720,10 @@
 		var win = navigator.platform.indexOf('Win') > -1;
 		if (win && document.querySelector('#sidenav-scrollbar')) {
 			var options = {
-				damping : '0.5'
+				damping: '0.5'
 			}
 			Scrollbar.init(document.querySelector('#sidenav-scrollbar'),
-					options);
+				options);
 		}
 	</script>
 	<!-- Github buttons -->
