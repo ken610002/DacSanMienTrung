@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +27,7 @@ public class HinhAnh implements Serializable{
 	@Column(name="mahinh")
 	private int maHinh;
 	@Column(name="tenhinh")
+//	@NotEmpty(message = "Vui lòng chọn một hình ảnh")
 	private String tenHinh;
 
 	

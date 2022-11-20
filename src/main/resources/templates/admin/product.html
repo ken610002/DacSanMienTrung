@@ -48,11 +48,10 @@
 				</nav>
 				<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
 					<div class="ms-md-auto pe-md-3 d-flex align-items-center mt-3">
-						<form action="/admin/sanpham/page" >
+						<form action="/admin/product/search"  method="post" >
 							<div class="input-group input-group-outline">
 								<label class="form-label">Type here...</label>
-								<input  type="text" class="form-control"
-									style="height: 40px; " />
+								<input name="Keyword" type="text" class="form-control" style="height: 40px; " />
 								<button class="btn bg-gradient-primary  ms-2"> Tìm kiếm</button>
 							</div>
 						</form>
@@ -137,7 +136,7 @@
 														</td>
 														<td class="align-middle text-center"><span
 																class="text-secondary text-xs font-weight-bold"
-																th:text="${product.donGia}"></span>
+																th:text="${#numbers.formatDecimal(product.donGia, 0, 'COMMA', 0, 'POINT')}"></span>
 														</td>
 														<td class="align-middle text-center">
 															<th:block th:each="img : ${images}">
@@ -176,7 +175,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row" th:if="${product != null}">
+					<div class="row">
 						<div class="col-12">
 							<div class="card my-4">
 								<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -185,9 +184,10 @@
 									</div>
 								</div>
 								<div class="card-body px-0 pb-2">
+								<h6 class="text-center text-danger">[[${message}]]</h6>
 									<form method="post" class="text-start" style="padding: 0 200px;"
 										th:object="${product}">
-										<div class="row">
+						<!--				<div class="row">
 											<th:block th:each="img : ${images}">
 												<div th:if="${img.sp.maSP == product.maSP}">
 													<img th:src="@{'/images/'+${img.tenHinh}}"
@@ -195,12 +195,12 @@
 												</div>
 											</th:block>
 										</div>
+						 -->
 										<div class="row">
 											<div class="input-group input-group-outline mb-3">
 												<label class="mt-2">Loại Sản Phẩm</label>
 												<br>
 												<select th:field="*{loaiSP.maLoai}" class=" form-control ms-2">
-													<option value="">Hãy chọn loại sản phẩm</option>
 													<th:block th:each="categori : ${categoris}">
 														<option th:value="${categori.maLoai}"
 															th:text="${categori.tenLoai}"
@@ -210,31 +210,32 @@
 												</select>
 											</div>
 										</div>
-										<div class="input-group input-group-outline mb-3">
+										<div class="input-group input-group-outline ">
 											<label class="form-label">Tên Sản Phẩm</label>
 											<input type="text" class="form-control" name="tenSP" th:field="*{tenSP}" />
 										</div>
-										<div class="row">
+										<p th:if="${#fields.hasErrors('tenSP')}" th:errors="*{tenSP}" class="text-danger" ></p>
+										<div class="row my-3">
 											<div class="col-6">
 												<div class="input-group input-group-outline">
 													<label class="form-label">Số Lượng</label>
-													<input type="number" class="form-control" name="soLuong"
-														th:field="*{soLuong}" />
+													<input type="number" class="form-control" name="soLuong" th:field="*{soLuong}" />
 												</div>
+												<p th:if="${#fields.hasErrors('soLuong')}" th:errors="*{soLuong}" class="text-danger" ></p>											
 											</div>
 											<div class="col-6">
 												<div class="input-group input-group-outline ">
 													<label class="form-label">Đơn Giá</label>
-													<input type="text" class="form-control" name="donGia"
-														th:field="*{donGia}" />
+													<input type="text" class="form-control" name="donGia" th:field="*{donGia}" />
 												</div>
+												<p th:if="${#fields.hasErrors('donGia')}" th:errors="*{donGia}" class="text-danger" ></p>
 											</div>
 										</div>
 										<div class="input-group input-group-outline mt-3">
 											<label class="form-label">Mô Tả</label>
 											<input type="text" class="form-control" name="moTa" th:field="*{moTa}" />
 										</div>
-
+										<p th:if="${#fields.hasErrors('moTa')}" th:errors="*{moTa}" class="text-danger" ></p>
 										<div class="text-center">
 											<button th:formaction="@{/admin/product/create}"
 												class="btn bg-gradient-primary my-4 mb-2">Thêm</button>

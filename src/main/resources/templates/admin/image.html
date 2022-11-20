@@ -48,11 +48,10 @@
 				</nav>
 				<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
 					<div class="ms-md-auto pe-md-3 d-flex align-items-center mt-3">
-						<form action="/admin/sanpham/page" >
+						<form action="/admin/image/search"  method="post">
 							<div class="input-group input-group-outline">
 								<label class="form-label">Type here...</label>
-								<input  type="text" class="form-control"
-									style="height: 40px; " />
+								<input name="Keyword" type="text" class="form-control" style="height: 40px; " />
 								<button class="btn bg-gradient-primary  ms-2"> Tìm kiếm</button>
 							</div>
 						</form>
@@ -98,54 +97,54 @@
 											<thead>
 												<tr>
 													<th
-														class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-														Mã Hình</th>
+														class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+														Mã Sản Phẩm</th>
 													<th
-														class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+														class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
 														Tên Sản Phẩm</th>
 													<th
-														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
 														Hình Ảnh</th>
 													<th class="text-secondary opacity-7"></th>
 												</tr>
 											</thead>
 											<tbody>
-													<tr>
+													<tr th:each="page : ${pages}">
 														<td>
-															<p class="text-xs font-weight-bold mb-0 ms-3">ma sp}</p>
+															<p class="text-xm font-weight-bold mb-0 ms-3">[[${page.sp.maSP}]]</p>
 														</td>
 														<td>
 															<div class="d-flex px-2 py-1">
 
 																<div class="d-flex flex-column justify-content-center">
-																	<h6 class="mb-0 text-sm">ten sp</h6>
+																	<h6 class="mb-0 text-sm">[[${page.sp.tenSP}]]</h6>
 																</div>
 															</div>
 														</td>
 														<td class="align-middle text-center text-sm">
-															<h6 class="text-xs font-weight-bold mb-0 text-secondary">ten file anh</h6>
+															<h6 class="text-xs font-weight-bold mb-0 text-secondary">[[${page.tenHinh}]]</h6>
 														</td>
 														<td class="align-middle">
-															<a href=""
+															<a th:href="@{|/admin/image/edit/${page.maHinh}|}"
 																class="text-secondary font-weight-bold text-xs mx-1">Edit</a>
-															<a href=""
+															<a th:href="@{|/admin/image/delete/${page.maHinh}|}"
 																class="text-secondary font-weight-bold text-xs">Del</a>
 														</td>
 													</tr>
 											</tbody>
 										</table>
 										<div class="text-center mt-3">
-											<a href="/admin/sanpham?p=0" class="mx-2"
+											<a th:href="@{|/admin/image?p=0|}" class="mx-2"
 												style="text-transform: uppercase; font-weight: bold;"><i
 													class="fa-solid fa-backward-step"></i></a>
-											<a href="/admin/sanpham?p=${page.number-1}" class=" mx-2"
-												style="text-transform: uppercase; font-weight: bold;"><i
+											<a th:href="@{|/admin/image?p=${pages.getNumber() > 0 ? pages.getNumber() - 1 : 0}|}"
+												class=" mx-2" style="text-transform: uppercase; font-weight: bold;"><i
 													class="fa fa-solid fa-backward"></i> </a>
-											<a href="/admin/sanpham?p=${page.number+1}" class="mx-2"
-												style="text-transform: uppercase; font-weight: bold;"><i
+											<a th:href="@{|/admin/image?p=${pages.getNumber() < pages.getTotalPages() -1 ? pages.getNumber() + 1 : pages.getTotalPages() -1}|}"
+												class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i
 													class="fa fa-solid fa-forward"></i> </a>
-											<a href="/admin/sanpham?p=${page.totalPages-1}" class="ms-1"
-												style="text-transform: uppercase; font-weight: bold;"><i
+											<a th:href="@{|/admin/image?p=${pages.getTotalPages() - 1}|}"
+												class="ms-1" style="text-transform: uppercase; font-weight: bold;"><i
 													class="fa-sharp fa-solid fa-forward-step"></i> </a>
 										</div>
 									</div>
@@ -162,33 +161,40 @@
 									</div>
 								</div>
 								<div class="card-body px-0 pb-2">
-									<form action=""  class="text-start"
+								<h6 class="text-center text-danger">[[${message}]]</h6>
+									<form action="/admin/image" th:object="${hinhanh}" method="post" enctype="multipart/form-data" class="text-start"
 										style="padding: 0 200px;">
-										<div class="input-group input-group-outline mb-3">
-											<label class="mt-2">Tên Sản Phẩm</label>
-											<br>
-											<select  class="form-control ms-2">
-												<option value="">SamSung</option>
 
-											</select>
-										</div>
+										<div class="row">
+											<div class="col-3" th:unless="${hinhanh.tenHinh == null}">
+												<img th:src="@{'/images/'+*{tenHinh}}" class="avatar avatar-xl me-3 border-radius-lg ms-3">
+											</div>
+											<div class="col-9">
+												<div class="input-group input-group-outline mb-3">
+													<label class="mt-2">Tên Sản Phẩm</label>
+													<select th:field="*{sp.maSP}" class=" form-control ms-2">
+														<th:block th:each="item : ${listsp}">
+															<option th:value="${item.maSP}" th:text="${item.tenSP}"
+																	th:selected="${item.maSP == hinhanh.sp.maSP}">
+															</option>
+														</th:block>
+													</select>
+												</div>										
+											</div>											
+										</div>										
 										<div class="input-group input-group-outline my-3 ">
 											<div class="input-file-container">
-												<input  class="input-file" id="my-file" type="file" />
+												<input name="file"  class="input-file" id="my-file" type="file" />
 												<label tabindex="0" for="my-file" class="input-file-trigger">Chọn Hình Ảnh</label>
 											</div>
-											<p class="file-return"></p>
+											<p class="file-return ms-3"></p>
 										</div>
 
 										<div class="text-center">
-											<button formaction=""
-												class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
-											<button formaction=""
-												class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
-											<button formaction=""
-												class="btn bg-gradient-info my-4 mb-2">Xóa</button>
-											<button formaction=""
-												class="btn bg-gradient-danger my-4 mb-2">Mới</button>
+											<button formaction="/admin/image/create" class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
+											<button th:formaction="|/admin/image/update/${hinhanh.maHinh}|" class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
+											<button th:formaction="@{|/admin/image/delete/${hinhanh.maHinh}|}" class="btn bg-gradient-info my-4 mb-2">Xóa</button>
+											<button formaction="/admin/image/new" class="btn bg-gradient-danger my-4 mb-2">Mới</button>
 										</div>
 									</form>
 								</div>

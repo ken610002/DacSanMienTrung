@@ -45,9 +45,9 @@ public class TaiKhoan implements Serializable{
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngaySinh;
 	
-	
+	@JsonIgnore
 	@ManyToOne 
-	@JoinColumn(name="maCV")
+	@JoinColumn(name="macv")
 	ChucVu cv;
 	@JsonIgnore
 	@OneToMany(mappedBy = "tk")
