@@ -109,20 +109,31 @@ public class AccountController {
 	}
 
 	@PostMapping("/account/login")
-	public <Account> String String(Model model, @RequestParam("taiKhoan") String taiKhoan,
+	public String String(Model model, @RequestParam("taiKhoan") String taiKhoan,
 			HttpSession session,
 			@RequestParam("matKhau") String password) {
-
+			
 			TaiKhoan tk = tkDAO.findById(taiKhoan).get();
-			if (!tk.getMatKhau().equals(password)) {
-				model.addAttribute("message", "Invalid password");
-				return "client/login";
+			
+			if(tk != null) {
+				if (!tk.getMatKhau().equals(password)) {
+					model.addAttribute("message", "Sai tài khoản hoặc mật khẩu!");
+					return "client/login";
+				}else {
+					cookie.add("taiKhoan", taiKhoan, 5);
+					session.setAttribute("taiKhoan", taiKhoan);
+					model.addAttribute("message", "Login successfylly");
+					if(tk.getCv().getMaCV() == 1) {
+						return "redirect:/home";
+					}else {
+						return "redirect:/admin/report";
+					}
+				}
 			}else {
-				cookie.add("taiKhoan", taiKhoan, 5);
-				session.setAttribute("taiKhoan", taiKhoan);
-				model.addAttribute("message", "Login successfylly");
-				return "redirect:/home";
+				model.addAttribute("message", "Sai tài khoản hoặc mật khẩu!");
 			}
+			return "client/login";
+
 	}
 	
 	@PostMapping("/forgot")
