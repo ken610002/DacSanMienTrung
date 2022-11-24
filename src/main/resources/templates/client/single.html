@@ -218,13 +218,10 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			</div>
 			<div ng-repeat="com in comments" class=" con-w3l wthree-of" style="margin-top: 0;">
 				<div class="row">
-					<div class="col-md-1">
-						<img style="height: 50px; width: 50px" alt=""
-							src="/images/of11.png">
-					</div>
-					<div class="col-md-11">
+					<div class="col-md-12">
 						<h6 class="" style="font-size: large;">
-							<b>{{com.tk.hoTen}}</b>
+							<i class="fa fa-user" aria-hidden="true"></i>
+							<b >{{com.tk.hoTen}}</b>
 						</h6>
 					</div>
 					<p class="text" style="margin-left: 5%;">{{com.noiDung}}</p>

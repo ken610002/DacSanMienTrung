@@ -20,8 +20,13 @@ app.controller("comment", function($scope,$http) {
 	
 	$scope.comment = async function(){
 		if($scope.cmt == undefined) return;
-		var date = new Date();		
-		var data = ['HungTH',$scope.pid,$scope.cmt];
+		var date = new Date();
+		var name = getCookie('taiKhoan');
+		if(name.length == 0){
+			alert("Vui lòng đăng nhập");
+			return;
+		}		
+		var data = [name,$scope.pid,$scope.cmt];
   		await  $.ajax({
             url: `${host}/product-comment`,
             type: 'POST',
@@ -44,3 +49,20 @@ app.controller("comment", function($scope,$http) {
 	
   
 });
+
+
+function getCookie(cname) {
+    var name = cname + '=';
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return '';
+	}
