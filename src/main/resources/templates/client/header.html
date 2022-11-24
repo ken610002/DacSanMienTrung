@@ -6,10 +6,17 @@
 			</div>
 			<div class="head-t">
 				<ul class="card">
-					<li><a href="/home/check-out/history"><i class="fa fa-heart" aria-hidden="true"></i>Lịch sử đơn hàng</a></li>
-					<li><a href="/home/login"><i class="fa fa-user" aria-hidden="true"></i>Đăng nhập</a></li>
-					<li><a href="/home/register"><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng ký</a></li>
-					<li th:if="${session.taiKhoan}"><a href="/home/account"><i class="fa fa-user" aria-hidden="true"></i>Tài khoản</a></li>
+					<th:block th:if="${session.taiKhoan != null}">
+						<li><a href="/home/check-out/history"><i class="fa fa-heart" aria-hidden="true"></i>Lịch sử đơn hàng</a></li>
+						<li ><a href="/home/account"><i class="fa fa-user" aria-hidden="true"></i>Tài khoản</a></li>
+						<li ><a href="/home/account/logout"><i class="fa fa-backward" aria-hidden="true"></i>Đăng xuất</a></li>
+						<li ><a  th:text="${session.taiKhoan}"><i class="fa fa-user" aria-hidden="true" ></i></a></li>
+					</th:block>
+					<th:block th:if="${session.taiKhoan == null}">
+						<li><a href="/home/login"><i class="fa fa-user" aria-hidden="true"></i>Đăng nhập</a></li>
+						<li><a href="/home/register"><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng ký</a></li>
+					</th:block>	
+					
 				</ul>
 			</div>
 
