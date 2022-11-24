@@ -15,6 +15,6 @@ public interface DonHangDAO extends JpaRepository<DonHang, Long>{
 	@Query(value = "SELECT MONTH(d.ngayTao) as month, COUNT(d.maDon) as totalCode, COUNT(c.id.maSP) as totalProduct, "
 			+ "MIN(c.donGia) as minPrice, MAX(c.donGia) as maxPrice, AVG(c.donGia) as mediumPrice, SUM(c.donGia) as totalPrice "
 			+ "FROM DonHang d JOIN ChiTietDonHang c ON d.maDon = c.id.maDon "
-			+ "GROUP BY d.ngayTao, d.maDon")
+			+ "GROUP BY MONTH(d.ngayTao)")
 	List<Object[]> getRevenusMonth();
 }
