@@ -90,4 +90,12 @@ public class HomeContronller {
 	public String doGetLogin() {
 		return "client/login";
 	}
+	@GetMapping("/forgot")
+	public String doGetForgot() {
+		return "client/forgot-password";
+	}
+	@GetMapping("/contact")
+	public String doGetContact() {
+		return "client/contact";
+	}
 }

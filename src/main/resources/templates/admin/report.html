@@ -100,30 +100,29 @@
 													<thead>
 														<tr>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-																Tổng Đơn Hủy</th>
+																class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+																Tổng Số Đơn </th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
 																Tổng Sản Phẩm</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
 																Tổng Doanh Thu</th>
 														</tr>
 													</thead>
 													<tbody>
-														<tr>
+														<tr th:each="item : ${doanhThuNgay}">
 															<td>
-																<h6 class="text-xs font-weight-bold text-center">masp
+																<h6 class="text-xm font-weight-bold text-center">[[${item.tongDon}]]
 																</h6>
 															</td>
 															<td>
 																<div class="justify-content-center">
-																	<h6 class="text-xs text-center">tensp</h6>
+																	<h6 class="text-xm text-center">[[${item.tongSP}]]</h6>
 																</div>
 															</td>
 															<td class="align-middle text-center text-sm">
-																<h6 class="text-xs font-weight-bold text-center">so
-																	luong</h6>
+																<h6 class="text-xm font-weight-bold text-center">[[${item.tongTien}]]</h6>
 															</td>
 														</tr>
 													</tbody>
@@ -152,22 +151,22 @@
 													<thead>
 														<tr>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
 																Tháng</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
+																class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ">
 																Tổng Đơn</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
 																Tổng Sản Phẩm</th>
 															<th
-																class=" text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																class=" text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
 																Giá Thấp Nhất</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
+																class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ">
 																Giá Cao Nhất</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
 																Giá Trung Bình</th>
 															<th
 																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -178,40 +177,40 @@
 														<th:block th:each="revenus : ${revenusMonth}">
 															<tr>
 																<td>
-																	<p class="text-xs text-center font-weight-bold"
+																	<p class="text-xm text-center font-weight-bold"
 																		th:text="${revenus.month}">
 																	</p>
 																</td>
 																<td>
 																	<div class=" justify-content-center">
-																		<h6 class="text-center text-xs"
+																		<h6 class="text-center text-xm"
 																			th:text="${revenus.totalCode}"></h6>
 																	</div>
 																</td>
 																<td class="align-middle text-center text-sm">
-																	<h6 class="text-xs font-weight-bold "
+																	<h6 class="text-xm font-weight-bold "
 																		th:text="${revenus.totalProduct}"></h6>
 																</td>
 																<td>
-																	<p class="text-xs font-weight-bold text-center"
-																		th:text="${#numbers.formatDecimal(revenus.minPrice, 0, 'COMMA', 2, 'POINT')}">
+																	<p class="text-xm font-weight-bold text-center"
+																		th:text="${#numbers.formatDecimal(revenus.minPrice, 1, 'COMMA', 0, 'POINT')}">
 																	</p>
 																</td>
 																<td>
 																	<div class="justify-content-center">
-																		<h6 class="text-center text-xs"
-																			th:text="${#numbers.formatDecimal(revenus.maxPrice, 0, 'COMMA', 2, 'POINT')}">
+																		<h6 class="text-center text-xm"
+																			th:text="${#numbers.formatDecimal(revenus.maxPrice, 1, 'COMMA', 0, 'POINT')}">
 																		</h6>
 																	</div>
 																</td>
 																<td class="align-middle text-center text-sm">
-																	<h6 class="text-xs font-weight-bold "
-																		th:text="${#numbers.formatDecimal(revenus.mediumPrice, 0, 'COMMA', 2, 'POINT')}">
+																	<h6 class="text-xm font-weight-bold "
+																		th:text="${#numbers.formatDecimal(revenus.mediumPrice, 1, 'COMMA', 0, 'POINT')}">
 																	</h6>
 																</td>
 																<td class="align-middle text-center text-sm">
-																	<h6 class="text-xs font-weight-bold "
-																		th:text="${#numbers.formatDecimal(revenus.totalPrice, 0, 'COMMA', 2, 'POINT')}">
+																	<h6 class="text-xm font-weight-bold "
+																		th:text="${#numbers.formatDecimal(revenus.totalPrice, 1, 'COMMA', 0, 'POINT')}">
 																	</h6>
 																</td>
 															</tr>
@@ -222,7 +221,7 @@
 											<form class="text-start">
 												<div class="text-end mx-3">
 													<a th:href="@{/admin/report/export/excel}"
-														class="btn bg-gradient-primary mb-2 ">Export to Excel</a>
+														class="btn bg-gradient-primary mb-2 ">Xuất Excel</a>
 												</div>
 											</form>
 										</div>
@@ -248,22 +247,22 @@
 													<thead>
 														<tr>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
 																Năm</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
 																Tổng Sản Phẩm</th>
 															<th
-																class=" text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																class=" text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
 																Giá Thấp Nhất</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
+																class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ">
 																Giá Cao Nhất</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
 																Giá Trung Bình</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
 																Tổng Doanh Thu</th>
 														</tr>
 													</thead>
@@ -272,32 +271,32 @@
 														<tr>
 															<td>
 																<div class="justify-content-center">
-																	<h6 class="text-center text-xs" th:text="${tk.nam}">1111</h6>
+																	<h6 class="text-center text-xm" th:text="${tk.nam}"></h6>
 																</div>
 															</td>
 															<td class="align-middle text-center text-sm">
-																<h6 class="text-xs font-weight-bold " th:text="${tk.tongSP}">200</h6>
+																<h6 class="text-xm font-weight-bold " th:text="${tk.tongSP}"></h6>
 															</td>
 															<td class="align-middle text-center text-sm">
-																<h6 class="text-xs font-weight-bold " th:text="${#numbers.formatCurrency(tk.giaThap)}">500</h6>
+																<h6 class="text-xm font-weight-bold " th:text="${#numbers.formatDecimal(tk.giaThap,1, 'COMMA', 0, 'POINT')}"></h6>
 															</td>
 															<td>
 																<div class="justify-content-center">
-																	<h6 class="text-center text-xs" th:text="${#numbers.formatCurrency(tk.giaCao)}">1111</h6>
+																	<h6 class="text-center text-xm" th:text="${#numbers.formatDecimal(tk.giaCao,1, 'COMMA', 0, 'POINT')}"></h6>
 																</div>
 															</td>
 															<td class="align-middle text-center text-sm">
-																<h6 class="text-xs font-weight-bold " th:text="${#numbers.formatCurrency(tk.giaTrungBinh)}">200</h6>
+																<h6 class="text-xm font-weight-bold " th:text="${#numbers.formatDecimal(tk.giaTrungBinh,1, 'COMMA', 0, 'POINT')}"></h6>
 															</td>
 															<td class="align-middle text-center text-sm">
-																<h6 class="text-xs font-weight-bold " th:text="${#numbers.formatCurrency(tk.doanhThu)}">500</h6>
+																<h6 class="text-xm font-weight-bold " th:text="${#numbers.formatDecimal(tk.doanhThu,1, 'COMMA', 0, 'POINT')}"></h6>
 															</td>
 														</tr>
 														</th:block>	
 													</tbody>
 												</table>
 											</div>
-											<form action="/admin/sanpham" modelAttribute="sp" class="text-start">
+											<form action="/admin/sanpham"  class="text-start">
 												<div class="text-end mx-3">
 													<button formaction="/admin/sanpham/them"
 														class="btn bg-gradient-primary mb-2 ">Xuất Excel</button>
@@ -326,22 +325,22 @@
 													<thead>
 														<tr>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+																class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
 																Tên Sản Phẩm</th>
 															<th
-																class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
+																class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ">
 																Tổng Số Lượng Bán</th>
 														</tr>
 													</thead>
 													<tbody>
-														<tr>
-															<td>
-																<p class="text-xs text-center font-weight-bold">Iphone
+														<tr th:each="top5 : ${top5sp}">
+															<td >
+																<p class="text-xm text-center font-weight-bold">[[${top5.group.tenSP}]]
 																</p>
 															</td>
 															<td>
 																<div class="justify-content-center">
-																	<h6 class="text-center text-xs">1111</h6>
+																	<h6 class="text-center text-xm">[[${top5.soLuong}]]</h6>
 																</div>
 															</td>
 														</tr>

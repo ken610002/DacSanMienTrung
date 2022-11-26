@@ -54,7 +54,7 @@
 						<li class="nav-item d-flex align-items-center"><a
 							href="javascript:;"
 							class="nav-link text-body font-weight-bold px-0"> <i
-								class="fa fa-user me-sm-1"></i> <span class="d-sm-inline d-none">Đăng Nhập</span>
+								class="fa fa-user me-sm-1"></i> <span class="d-sm-inline d-none" th:text="${session.taiKhoan}"></span>
 						</a></li>
 						<li class="nav-item d-xl-none ps-3 d-flex align-items-center">
 							<a href="javascript:;" class="nav-link text-body p-0"
@@ -282,8 +282,8 @@
 								</div>
 
 <!--   								<input th:unless="${tongtien.tongTien == 'null'}" th:value="0" name="tongtien" type="text">							 
- --> 								<div class="text-center">
-									<button type="button" class="btn bg-gradient-primary my-4 mb-2">Xóa Đơn Hàng</button>
+ --> 							<div class="text-center">
+									<button th:formaction="@{|/admin/order/delete/${donhang.maDon}|}" type="submit" class="btn bg-gradient-primary my-4 mb-2">Xóa Đơn Hàng</button>
 									<button formaction="/admin/order/update" type="submit" class="btn bg-gradient-info my-4 mb-2">Sửa Đơn Hàng</button>
 									<button formaction="/admin/order/reset" type="submit" class="btn bg-gradient-danger my-4 mb-2">Mới</button>									
 								</div>

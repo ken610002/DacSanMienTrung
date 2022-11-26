@@ -6,6 +6,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import com.msstore.Entity.DoanhThuNgay;
 import com.msstore.Entity.DonHang;
 
 public interface DonHangDAO extends JpaRepository<DonHang, Long>{
@@ -17,4 +18,8 @@ public interface DonHangDAO extends JpaRepository<DonHang, Long>{
 			+ "FROM DonHang d JOIN ChiTietDonHang c ON d.maDon = c.id.maDon "
 			+ "GROUP BY MONTH(d.ngayTao)")
 	List<Object[]> getRevenusMonth();
+	
+	@Query("SELECT  new DoanhThuNgay(COUNT(o.dh.maDon),COUNT(o.sp.maSP),SUM(o.donGia)) " + " FROM ChiTietDonHang o "
+			+ " WHERE DAY(o.dh.ngayTao) = DAY(getdate())")
+	public List<DoanhThuNgay> getDoanhThuNgay();
 }

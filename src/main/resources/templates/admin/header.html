@@ -23,7 +23,7 @@
 							<i class="material-icons opacity-10">dashboard</i>
 						</div> <span class="nav-link-text ms-1">Đơn Hàng</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link text-white "
+				<li class="nav-item"><a class="nav-link text-white " th:if="session.chucVu == 2"
 					href="/admin/account">
 						<div
 							class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -64,8 +64,7 @@
 						pages</h6>
 				</li>
 
-				<li class="nav-item"><a class="nav-link text-white "
-					href="/home/account/logout">
+				<li class="nav-item"><a class="nav-link text-white" th:href="|/home/account/logout|">
 						<div
 							class="text-white text-center me-2 d-flex align-items-center justify-content-center">
 							<i class="material-icons opacity-10">logout</i>

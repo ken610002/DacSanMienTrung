@@ -83,7 +83,7 @@ public class CategoriesAdminController {
 		Pageable pageAble = PageRequest.of(page.orElse(0), 5);
 		Page<LoaiSP> listLoaiSP = lspDAO.findAll(pageAble);
 		
-		if(loaisp.getMaLoai().equalsIgnoreCase("")){
+		if(maloai.equalsIgnoreCase("null")){
 			model.addAttribute("message", "Vui lòng chọn loại sản phẩm để xóa");
 			model.addAttribute("listLoaiSP", listLoaiSP);
 			return "admin/categories";

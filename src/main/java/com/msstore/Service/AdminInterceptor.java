@@ -31,8 +31,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
         	response.sendRedirect("/home");
 			return false;
         }
-        
-		
+        		
         return true;
     }
 }

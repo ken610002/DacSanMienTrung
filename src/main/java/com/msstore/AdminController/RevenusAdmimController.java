@@ -10,14 +10,19 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.msstore.Entity.DoanhThuNgay;
 import com.msstore.DAO.DonHangDAO;
 import com.msstore.DAO.SanPhamDAO;
 import com.msstore.DTO.ThongKeDTO;
+import com.msstore.Entity.SanPhamTop8;
 import com.msstore.util.Excel;
 
 @Controller
@@ -41,6 +46,12 @@ public class RevenusAdmimController {
 					objects[6].toString());
 			list.add(dto);
 		}
+		Pageable pageable = PageRequest.of(0, 5);
+		Page<SanPhamTop8> top8SP = spDAO.findByTop8(pageable);
+		List<DoanhThuNgay> doanhThuNgay = dhDAO.getDoanhThuNgay();
+
+		model.addAttribute("doanhThuNgay", doanhThuNgay);
+		model.addAttribute("top5sp", top8SP);
 		model.addAttribute("revenusMonth", list);
 		model.addAttribute("tkNam", spDAO.findBuThongKeNam());
 		return "admin/report";
@@ -70,6 +81,7 @@ public class RevenusAdmimController {
 		Excel excelExporter = new Excel(list);
 		
 		excelExporter.export(response);		
-	}	
+	}
+	
 
 }

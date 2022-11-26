@@ -122,6 +122,7 @@ public class AccountController {
 				}else {
 					cookie.add("taiKhoan", taiKhoan, 5);
 					session.setAttribute("taiKhoan", taiKhoan);
+					session.setAttribute("chucVu", tk.getCv().getMaCV());
 					model.addAttribute("message", "Login successfylly");
 					if(tk.getCv().getMaCV() == 1) {
 						return "redirect:/home";
@@ -159,6 +160,6 @@ public class AccountController {
                 e.printStackTrace();
             }
         }
-        return "client/index";
+        return "redirect:client/index";
 	}
 }

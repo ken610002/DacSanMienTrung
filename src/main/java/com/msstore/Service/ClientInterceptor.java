@@ -14,6 +14,8 @@ public class ClientInterceptor extends HandlerInterceptorAdapter{
 	@Autowired
 	SessionService sessionService;
 	@Autowired
+	CookieService cookieService;
+	@Autowired
 	TaiKhoanDAO tkDAO;
 	
 	@Override
@@ -31,7 +33,9 @@ public class ClientInterceptor extends HandlerInterceptorAdapter{
 		}	
 		
 		TaiKhoan tk = tkDAO.findById(sessionService.get("taiKhoan")).get();
-        if(tk.getCv().getMaCV() == 2 || tk.getCv().getMaCV() == 3) {
+//		TaiKhoan tk = tkDAO.findById(cookieService.get("taiKhoan").getValue()).get();
+
+		if(tk.getCv().getMaCV() == 2 || tk.getCv().getMaCV() == 3) {
         	response.sendRedirect("/admin/report");
 			return false;
         }

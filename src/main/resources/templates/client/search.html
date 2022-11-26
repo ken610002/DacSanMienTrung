@@ -64,17 +64,26 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 </head>
 
 <body>
-	<div class="header">
+	
+	
+	<div class="header" >
 		<div class="container">
 			<div class="logo">
 				<h1><a href="/home"><b>T<br>H<br>E</b>MS Store<span>Siêu thị miền Trung</span></a></h1>
 			</div>
 			<div class="head-t">
 				<ul class="card">
-					<li><a href="cart.html"><i class="fa fa-heart" aria-hidden="true"></i>Giỏ hàng</a></li>
-					<li><a href="login.html"><i class="fa fa-user" aria-hidden="true"></i>Đăng nhập</a></li>
-					<li><a href="register.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng ký</a></li>
-					<li><a href="account.html"><i class="fa fa-user" aria-hidden="true"></i>Tài khoản</a></li>
+					<th:block th:if="${session.taiKhoan != null}">
+						<li><a href="/home/check-out/history"><i class="fa fa-heart" aria-hidden="true"></i>Lịch sử đơn hàng</a></li>
+						<li ><a href="/home/account"><i class="fa fa-user" aria-hidden="true"></i>Tài khoản</a></li>
+						<li ><a href="/home/account/logout"><i class="fa fa-backward" aria-hidden="true"></i>Đăng xuất</a></li>
+						<li ><a  th:text="${session.taiKhoan}"><i class="fa fa-user" aria-hidden="true" ></i></a></li>
+					</th:block>
+					<th:block th:if="${session.taiKhoan == null}">
+						<li><a href="/home/login"><i class="fa fa-user" aria-hidden="true"></i>Đăng nhập</a></li>
+						<li><a href="/home/register"><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng ký</a></li>
+					</th:block>	
+					
 				</ul>
 			</div>
 
@@ -89,13 +98,15 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
+
+
 					</div>
 					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav ">
-							<li class=" active"><a th:href="@{/home}" class="hyper "><span>Trang chủ</span></a></li>
+							<li class=" active"><a href="/home" class="hyper "><span>Trang chủ</span></a></li>
 
 							<li class="dropdown ">
-								<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Danh mục<b
+								<a href="/home" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Danh mục<b
 											class="caret"></b></span></a>
 								<ul class="dropdown-menu multi">
 									<div class="row">
@@ -117,9 +128,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 									</div>
 								</ul>
 							</li>
-							<li><a href="contact.html" class="hyper"><span>Liên hệ</span></a></li>
-							<li><a href="contact.html" class="hyper"><span>Tin tức</span></a></li>
-							<li><a href="about.html" class="hyper"><span>Giới thiệu</span></a></li>
+							<li><a href="#" class="hyper"><span>Liên hệ</span></a></li>
+							<li><a href="#" class="hyper"><span>Tin tức</span></a></li>
+							<li><a href="#" class="hyper"><span>Giới thiệu</span></a></li>
 						</ul>
 					</div>
 				</nav>
@@ -133,6 +144,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 		</div>
 	</div>
+	
 	<div data-vide-bg="/video/video">
 		<div class="container">
 			<div class="banner-info">
